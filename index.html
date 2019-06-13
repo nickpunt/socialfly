@@ -1,25 +1,3 @@
-<?php
-include_once 'main/_lib/config.php';
-
-// Redirect users to app.php including the appropriate GET variables if loaded through facebook (iframe)
-if (array_key_exists('fb_sig_in_iframe', $_REQUEST)) {
-	$params = $_SERVER['QUERY_STRING'];
-	$redirectURL = "main/index.php?" . $params;
-	header('Location: ' . $redirectURL);
-} else {
-	// Loading through the Connect site
-	// Ensure that the URL is prefixed with 'WWW', otherwise facebook's cookies can get messed up.
-	$url = $_SERVER['SERVER_NAME'];
-	$page = $_SERVER['PHP_SELF'];
-
-	$substr = substr($base_url, 7);
-	if ($url != $substr) {
-		$redirectURL = $base_url.$page;
-		header('Location: ' . $redirectURL);
-	}
-}
-?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
