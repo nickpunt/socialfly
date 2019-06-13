@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="Description" content="About Socialfly: Keeping in touch doesn't have to be hard. All your relationships, all in one place. Make keeping up a habit. Take note, quickly. Remember each relationship. Private and secure. Where your friends live. Where your friends live. Where your friends live. Where your friends live.">
+
+	<title>Socialfly: 2x Friend, 1/2 Time</title>
+	<script language="JavaScript" type="text/javascript">
+	<!--
+	//v1.7
+	// Flash Player Version Detection
+	// Detect Client Browser type
+	// Copyright 2005-2008 Adobe Systems Incorporated.  All rights reserved.
+	var isIE  = (navigator.appVersion.indexOf("MSIE") != -1) ? true : false;
+	var isWin = (navigator.appVersion.toLowerCase().indexOf("win") != -1) ? true : false;
+	var isOpera = (navigator.userAgent.indexOf("Opera") != -1) ? true : false;
+	function ControlVersion()
+	{
+		var version;
+		var axo;
+		var e;
+		// NOTE : new ActiveXObject(strFoo) throws an exception if strFoo isn't in the registry
+		try {
+			// version will be set for 7.X or greater players
+			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");
+			version = axo.GetVariable("$version");
+		} catch (e) {
+		}
+		if (!version)
+		{
+			try {
+				// version will be set for 6.X players only
+				axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6");
+
+				// installed player is some revision of 6.0
+				// GetVariable("$version") crashes for versions 6.0.22 through 6.0.29,
+				// so we have to be careful. 
+
+				// default to the first public version
+				version = "WIN 6,0,21,0";
+				// throws if AllowScripAccess does not exist (introduced in 6.0r47)		
+				axo.AllowScriptAccess = "always";
+				// safe to call for 6.0r47 or greater
+				version = axo.GetVariable("$version");
+			} catch (e) {
+			}
+		}
+		if (!version)
+		{
+			try {
+				// version will be set for 4.X or 5.X player
+				axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.3");
+				version = axo.GetVariable("$version");
+			} catch (e) {
+			}
+		}
+		if (!version)
+		{
+			try {
+				// version will be set for 3.X player
+				axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.3");
+				version = "WIN 3,0,18,0";
+			} catch (e) {
+			}
+		}
+		if (!version)
+		{
+			try {
+				// version will be set for 2.X player
+				axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+				version = "WIN 2,0,0,11";
+			} catch (e) {
+				version = -1;
+			}
+		}
+
+		return version;
+	}
+	// JavaScript helper required to detect Flash Player PlugIn version information
+	function GetSwfVer(){
+		// NS/Opera version >= 3 check for Flash plugin in plugin array
+		var flashVer = -1;
+
+		if (navigator.plugins != null && navigator.plugins.length > 0) {
+			if (navigator.plugins["Shockwave Flash 2.0"] || navigator.plugins["Shockwave Flash"]) {
+				var swVer2 = navigator.plugins["Shockwave Flash 2.0"] ? " 2.0" : "";
+				var flashDescription = navigator.plugins["Shockwave Flash" + swVer2].description;
+				var descArray = flashDescription.split(" ");
+				var tempArrayMajor = descArray[2].split(".");			
+				var versionMajor = tempArrayMajor[0];
+				var versionMinor = tempArrayMajor[1];
+				var versionRevision = descArray[3];
+				if (versionRevision == "") {
+					versionRevision = descArray[4];
+				}
+				if (versionRevision[0] == "d") {
+					versionRevision = versionRevision.substring(1);
+				} else if (versionRevision[0] == "r") {
+					versionRevision = versionRevision.substring(1);
+					if (versionRevision.indexOf("d") > 0) {
+						versionRevision = versionRevision.substring(0, versionRevision.indexOf("d"));
+					}
+				}
+				var flashVer = versionMajor + "." + versionMinor + "." + versionRevision;
+			}
+		}
+		// MSN/WebTV 2.6 supports Flash 4
+		else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.6") != -1) flashVer = 4;
+		// WebTV 2.5 supports Flash 3
+		else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.5") != -1) flashVer = 3;
+		// older WebTV supports Flash 2
+		else if (navigator.userAgent.toLowerCase().indexOf("webtv") != -1) flashVer = 2;
+		else if ( isIE && isWin && !isOpera ) {
+			flashVer = ControlVersion();
+		}	
+		return flashVer;
+	}
+	// When called with reqMajorVer, reqMinorVer, reqRevision returns true if that version or greater is available
+	function DetectFlashVer(reqMajorVer, reqMinorVer, reqRevision)
+	{
+		versionStr = GetSwfVer();
+		if (versionStr == -1 ) {
+			return false;
+		} else if (versionStr != 0) {
+			if(isIE && isWin && !isOpera) {
+				// Given "WIN 2,0,0,11"
+				tempArray         = versionStr.split(" "); 	// ["WIN", "2,0,0,11"]
+				tempString        = tempArray[1];			// "2,0,0,11"
+				versionArray      = tempString.split(",");	// ['2', '0', '0', '11']
+			} else {
+				versionArray      = versionStr.split(".");
+			}
+			var versionMajor      = versionArray[0];
+			var versionMinor      = versionArray[1];
+			var versionRevision   = versionArray[2];
+	        	// is the major.revision >= requested major.revision AND the minor version >= requested minor
+			if (versionMajor > parseFloat(reqMajorVer)) {
+				return true;
+			} else if (versionMajor == parseFloat(reqMajorVer)) {
+				if (versionMinor > parseFloat(reqMinorVer))
+					return true;
+				else if (versionMinor == parseFloat(reqMinorVer)) {
+					if (versionRevision >= parseFloat(reqRevision))
+						return true;
+				}
+			}
+			return false;
+		}
+	}
+	function AC_AddExtension(src, ext)
+	{
+	  if (src.indexOf('?') != -1)
+	    return src.replace(/\?/, ext+'?'); 
+	  else
+	    return src + ext;
+	}
+	function AC_Generateobj(objAttrs, params, embedAttrs) 
+	{ 
+	  var str = '';
+	  if (isIE && isWin && !isOpera)
+	  {
+	    str += '<object ';
+	    for (var i in objAttrs)
+	    {
+	      str += i + '="' + objAttrs[i] + '" ';
+	    }
+	    str += '>';
+	    for (var i in params)
+	    {
+	      str += '<param name="' + i + '" value="' + params[i] + '" /> ';
+	    }
+	    str += '</object>';
+	  }
+	  else
+	  {
+	    str += '<embed ';
+	    for (var i in embedAttrs)
+	    {
+	      str += i + '="' + embedAttrs[i] + '" ';
+	    }
+	    str += '> </embed>';
+	  }
+	  document.write(str);
+	}
+	function AC_FL_RunContent(){
+	  var ret = 
+	    AC_GetArgs
+	    (  arguments, ".swf", "movie", "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+	     , "application/x-shockwave-flash"
+	    );
+	  AC_Generateobj(ret.objAttrs, ret.params, ret.embedAttrs);
+	}
+	function AC_SW_RunContent(){
+	  var ret = 
+	    AC_GetArgs
+	    (  arguments, ".dcr", "src", "clsid:166B1BCA-3F9C-11CF-8075-444553540000"
+	     , null
+	    );
+	  AC_Generateobj(ret.objAttrs, ret.params, ret.embedAttrs);
+	}
+	function AC_GetArgs(args, ext, srcParamName, classid, mimeType){
+	  var ret = new Object();
+	  ret.embedAttrs = new Object();
+	  ret.params = new Object();
+	  ret.objAttrs = new Object();
+	  for (var i=0; i < args.length; i=i+2){
+	    var currArg = args[i].toLowerCase();    
+	    switch (currArg){	
+	      case "classid":
+	        break;
+	      case "pluginspage":
+	        ret.embedAttrs[args[i]] = args[i+1];
+	        break;
+	      case "src":
+	      case "movie":	
+	        args[i+1] = AC_AddExtension(args[i+1], ext);
+	        ret.embedAttrs["src"] = args[i+1];
+	        ret.params[srcParamName] = args[i+1];
+	        break;
+	      case "onafterupdate":
+	      case "onbeforeupdate":
+	      case "onblur":
+	      case "oncellchange":
+	      case "onclick":
+	      case "ondblclick":
+	      case "ondrag":
+	      case "ondragend":
+	      case "ondragenter":
+	      case "ondragleave":
+	      case "ondragover":
+	      case "ondrop":
+	      case "onfinish":
+	      case "onfocus":
+	      case "onhelp":
+	      case "onmousedown":
+	      case "onmouseup":
+	      case "onmouseover":
+	      case "onmousemove":
+	      case "onmouseout":
+	      case "onkeypress":
+	      case "onkeydown":
+	      case "onkeyup":
+	      case "onload":
+	      case "onlosecapture":
+	      case "onpropertychange":
+	      case "onreadystatechange":
+	      case "onrowsdelete":
+	      case "onrowenter":
+	      case "onrowexit":
+	      case "onrowsinserted":
+	      case "onstart":
+	      case "onscroll":
+	      case "onbeforeeditfocus":
+	      case "onactivate":
+	      case "onbeforedeactivate":
+	      case "ondeactivate":
+	      case "type":
+	      case "codebase":
+	      case "id":
+	        ret.objAttrs[args[i]] = args[i+1];
+	        break;
+	      case "width":
+	      case "height":
+	      case "align":
+	      case "vspace": 
+	      case "hspace":
+	      case "class":
+	      case "title":
+	      case "accesskey":
+	      case "name":
+	      case "tabindex":
+	        ret.embedAttrs[args[i]] = ret.objAttrs[args[i]] = args[i+1];
+	        break;
+	      default:
+	        ret.embedAttrs[args[i]] = ret.params[args[i]] = args[i+1];
+	    }
+	  }
+	  ret.objAttrs["classid"] = classid;
+	  if (mimeType) ret.embedAttrs["type"] = mimeType;
+	  return ret;
+	}
+	// -->
+	</script>
+	<link rel="stylesheet" type="text/css" href="about.css" />
+</head>
+
+<body id="about">
+<div id="productheader">
+	<h2><a href="index.php"><img src="images/socialfly.png" width="175" height="50" /></a></h2>
+	<ul>
+		<li><a href="index.php">Home</a></li>
+		<li><a class="selected">About</a></li>
+		<li><a href="testimonials.html">Testimonials</a></li>
+		<li><a href="http://social-fly.com/blog">Blog</a></li>
+		<li><a href="main/index.php" class="connect"><img id="fb_login_image" alt="Connect with Facebook" src="images/loginfbconnect.gif"/></a></li>
+	</ul>
+</div>
+<div id="container">
+	<div id="main">
+		<div id="content">
+			<div id="hero">
+				<h1 class="replaced">Keeping in touch doesn't have to be hard.</h1>
+				<p class="intro people">From daily reminders to shorthand notes, Socialfly is the best way to remember everyone that matters.</p>
+			</div>
+			<div class="grid2cola">
+				<div class="column first">
+					<h3>All your relationships, all in one place.</h3>
+					<p>
+					Keep in touch with everyone in one easy interface, whether they're new acquaintances, old friends, or business contacts. 
+					Just launch Socialfly and you'll be able to set reminders and take notes on all your Facebook friends right away. 
+					<a class="more" href="testimonials.html">See how Socialfly is helping people keep up</a> 
+					</p>
+					<h3>Make keeping up a habit.</h3>
+					<p>
+					Stop waiting for chance encounters and status updates 	<img class="left" width="32" height="25" alt="notifications" src="images/sm-notify.png"/>
+					to remind you who matters.					
+					Be proactive with Socialfly reminders, and we'll email you or notify you on Facebook when it's time to talk. It's that easy.
+					</p>
+				</div>
+				<div class="column last flushrightSm">					
+					<img width="320" height="225" src="images/about-friends.png" alt="All your friends in one place."/>
+				</div>
+			</div>
+			<div class="grid2colb">
+				<div class="column first flushleftSm">
+					<script language="JavaScript" type="text/javascript">
+						AC_FL_RunContent(
+							'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0',
+							'width', '484',
+							'height', '160',
+							'src', 'about/note',
+							'quality', 'high',
+							'pluginspage', 'http://www.adobe.com/go/getflashplayer',
+							'align', 'middle',
+							'play', 'true',
+							'loop', 'true',
+							'scale', 'showall',
+							'wmode', 'window',
+							'devicefont', 'false',
+							'id', 'about/note',
+							'bgcolor', '#ffffff',
+							'name', 'about/note',
+							'menu', 'true',
+							'allowFullScreen', 'false',
+							'allowScriptAccess','sameDomain',
+							'movie', 'images/note',
+							'salign', ''
+							); //end AC code
+					</script>
+					<noscript>
+						<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="484" height="160" id="about/note" align="middle">
+						<param name="allowScriptAccess" value="sameDomain" />
+						<param name="allowFullScreen" value="false" />
+						<param name="movie" value="images/note.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="images/note.swf" quality="high" bgcolor="#ffffff" width="484" height="160" name="about/note" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
+						</object>
+					</noscript>
+				</div>
+				<div class="column last">
+					<h3>Take note, quickly.</h3>
+					<p>Remember important details and plan your next steps, without switching between different apps and menus.</p>
+				</div>
+			</div>
+			<div class="grid2colc">
+				<div class="column first">	
+					<h3>Remember each relationship.</h3> 
+					<p>
+						Get up to date quickly with a private feed of important details about each relationship, and 
+						watch your relationships evolve as you identify and follow through with social opportunities. 
+						Additional details are loaded from Facebook to start you off with the basics, and we'll soon let you import data from your address book and other sources.</p>	
+					<h3>Private and secure.</h3>
+					<p class="bottom">
+						<img class="left" style="margin:10px 10px 10px 0;" width="50" height="50" alt="notifications" src="images/sm-safe.png"/>Whereas most web services are about sharing information between people, Socialfly is completely private, and cannot be seen by anybody but you.
+						If you want to write why you don't like somebody, that's fine - they'll never know.
+					</p>
+				</div>
+				<div class="column last flushrightSm"><img width="398" height="283" alt="Contacts" src="images/about-contact.png"/></div>
+			</div>	
+			<div class="grid2cold">
+				<div class="column first flushleftSmSm">
+					<img width="400" height="152" alt="Friends mapped" src="images/about-map-wide.png"/>
+				</div>
+				<div class="column last">
+					<h3>Where your friends live.</h3>
+					<p>Traveling somewhere? Use Socialfly to remember where your friends live, so you can quickly figure out who to visit. 
+				</div>
+			</div>
+			<div class="grid2cole">
+				<div class="column first">
+					<h3>Get the big picture.</h3>
+					<p class="bottom">
+						Between casual acquaintances, professional contacts, and all your other friends, you probably want to remember many things about many people.
+						Looking this up would normally be time consuming, but with Socialfly you can get perspective on all your relationships - quickly.
+						Because Socialfly's notes organize themselves, you can view every activity plan, favor, interest, and more across each relationship.					
+					</p>
+				</div>
+				<div class="column last flushrightSm">
+					<img width="393" height="210" alt="The Big Picture" src="images/about-notes.png"/>
+				</div>
+			</div>
+			<div class="grid2colf">
+				<div class="column first flushleftSm">
+					<img width="323" height="235" alt="Tags" src="images/about-tags.png"/>
+				</div>
+				<div class="column last">
+					<h3>Stay organized and Get Things Done</h3>
+					<p>
+						Relationships are fluid - a new acquaintance could turn into an important business contact, a good friend, or both. 
+						Using tags, you can organize your relationships across many different categories, whether you're job seeking, dating, 
+						keeping up with friends from different social groups, keeping track of skillsets, or just staying on top of your extended family.
+					</p>
+					<h3>Coming soon: Socialfly for the iPhone</h3>
+					 <p>
+						<img class="left" style="margin:5px 10px 0px 0;" width="50" height="50" alt="notifications" src="images/sm-iphone.gif"/>
+						Most socializing happens away from your computer. Stay ahead of the curve with Socialfly for the iPhone, coming in February 09.</p>
+				</div>
+			</div>
+			<div class="finalsale">
+			<h3 style="padding-bottom:15px;">What are you waiting for? Get started with Socialfly by clicking below.</h3>
+			<a href="main/" class="connect"><img id="fb_login_image" alt="Connect" src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_white_large_long.gif"/></a>
+			</div>
+		</div>		
+	</div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5708981-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

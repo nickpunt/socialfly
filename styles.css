@@ -1,0 +1,1822 @@
+/*************** RECENT CONTACTS CLASSES ****************/
+#recent-contacts-body {position: relative;left: 0px;top: 0px;height: 30px;width: 533px;}
+#recent-contacts-body .latest-recents {font-size: 12px;color: #666666;position: absolute;top: 4px;left: 14px;}
+#recent-contacts-body .latest-browse {font-size: 11px;font-family: Tahoma, Verdana, Arial, sans-serif;color: #999999;position: absolute;top:5px;right: 11px;text-align: right;}
+#recent-contacts-body .prev-hr, .next-hr {padding: 0 10px;color: gray;}
+#recent-contacts-body .prev, .next {color: #3b5998;}
+
+
+#recent-contacts-input {position:relative;left:0px;width:500px;height:50px;padding:5px;border: 1px solid #d8dfea;background-color: #f2f4f7;}
+#recent-contacts-input:hover {border: 1px solid #000000;z-index: 1;}
+#recent-contacts-input .name {position: absolute;left: 67px;top: 9px;font-size: 12px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight: bold;}
+#recent-contacts-input .lastcontact {font-size: 10px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight: normal;color: #999999;}
+#recent-contacts-input .quick-input {position: absolute;left: 67px;top: 35px;width: 450px;height: 15px;}
+
+/*************** GOOGLE MAPS API CLASSES ****************/
+
+div.LabeledMarker_markerLabel {
+	color: #333;
+	font-weight:bold;
+	background-color:#ddd;
+	border:1px solid #666;
+	white-space:nowrap;
+}/*Classes that deal with the rating of new people using stars*/
+.star{float:left;width:12px; height: 12px; background:url('../images/stars.gif') no-repeat -24px 0px;}
+.star_hover{background-position:-12px 0px}
+.star_click{background-position:0px 0px}
+/**************************************************************************************************************/
+/*** CARDS.CSS - Friend contact cards and all associated classes **********************************************/
+/**************************************************************************************************************/
+/****** Currently everything in the left-side of the site is contained here, however multiple views coming ****/
+/**************************************************************************************************************/
+
+
+
+
+/**************************************************************************************************************/
+/**************************************** BASIC CARD LAYOUT DEFINITIONS ***************************************/
+/**************************************************************************************************************/
+/** NEEDS
+ * clean up input area a bit, esp naming (suggestion-quick-input is a sucky name)
+**/
+
+.card 									{float:left;left:0px;top:0px;width:530px;padding:0px;border:1px solid #fff;clear:both;} /*position:relative; breaks drop downs*/
+	.card-container 			{float:left;padding:5px 5px 5px 5px;width:500px;background-color:#FCFCFC;}
+		.card-image 				{-khtml-user-select:none;-moz-user-select:none;float:left;}
+		.card-body 					{float:left;width:450px;padding:0px;height:50px;}
+			.card-name 				{-khtml-user-select:none;-moz-user-select:none;float:left;display:block;height:20px;width:270px;padding-left:5px;font-size:18px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight:bold;}
+			.card-name a:hover{text-decoration:none;}
+			.card-notadded		{font-style:italic;color:#999;}
+			.card-suggest			{-khtml-user-select:none;-moz-user-select:none;float:left;height:24px;width:170px;vertical-align:text-top;padding-top:3px;font-size:11px;font-weight:bold;text-align:right;color:#d49000;}
+			.card-inputholder	{float:left;width:438px;padding-left:5px;}
+				.card-input			{float:left;width:438px;background-color:#fff;border:1px solid #d9ddeb;height:21px;}	/* if add margin-top:-2px; works in safari */
+					.card-input-text{-khtml-user-select:none;-moz-user-select:none;display:none;font-size:12px;font-family:Tahoma, Verdana, Arial, sans-serif;font-weight:normal;color:#999;padding-top:3px;padding-left:3px;}
+					.suggestion-quick-input {display:none;float:left;padding-left:0px;width:438px;height:21px;} 
+					.suggestion-quick-input .quick-input {width:438px;height:21px;} 
+					
+/*					.suggestion-quick-input input {padding-left:5px;padding-top:2px;width:432px;height:15px;} */
+	.card-actions					{display:none;float:left;width:20px;padding-top:0px;padding-bottom:3px;background-color:#eee;}
+		.action-first				{float:left;width:16px;padding-top:9px;padding-bottom:10px;padding-left:2px;padding-right:2px;background-color:#ffe187;}
+		.action-second			{float:left;width:16px;padding-top:2px;padding-bottom:4px;padding-left:2px;padding-right:2px;}
+/*.card-container:hover		{background-color:#e8f0f0;}*/
+
+
+.emptycards 						{position:relative;left:0px;top:0px;width:530px;padding:0px;border:1px solid #fff;clear:both;}
+.emptycards-text  			{float:left;display:block;width:530px;padding:10px;font-size:14px;font-family: Tahoma, Verdana, Arial, sans-serif;}
+
+/**************************************************************************************************************/
+/******************************** MINICARDS - Good for asking for input from many *****************************/
+/**************************************************************************************************************/
+#minicard							{position:relative;width:530px;clear:both;}
+#minicard ul					{list-style-type:none;width:530px;margin-bottom:10px;}
+#minicard ul li				{height:23px;margin-bottom:3px;background-color:#ddd;}
+#minicard ul li h1		{float:left;width:150px;padding:5px 3px 5px 5px;font-size:10px;font-color:#3b5998;} /* friend name */
+#minicard ul li h2		{float:left;padding:2px 0px 2px 0px;}
+#minicard .card	{} /* makes our card system work */
+/* now we need to build click classes that upon click drop down the image, so people can remember the user */ 
+
+.qi_mini							{float:left;width:348px;height:17px;border:1px solid #D9DDEB;background-color:#FFF;}
+.qi_mini input				{font-size: 11px;border: 0px;padding:2px 0px 0px 3px;height:14px;color:#666;width:342px;}
+
+.qi_options 					{z-index:3;}
+.qi_options_mini			{position:absolute;right:0px;width:16px;font-size:9px;}
+.qi_options_face			{position:relative;right:0px;top:2px;}
+.qi_options a					{display:block; position:absolute; background: url(../images/story_editor_icon.gif) no-repeat scroll right 0;height:15px;padding:3px 15px 0 4px;right:2px;}
+.qi_options a.feed_selected,
+.qi_options a:hover 	{background-position:right -18px;display:block;} 
+
+
+/**************************************************************************************************************/
+/********************* FACECARDS - Just images and names, good for selecting en masse *************************/
+/**************************************************************************************************************/
+#facecard							{position:relative;width:530px;clear:both;}
+#facecard ul					{list-style-type:none;width:530px}
+#facecard .notempty		{margin-bottom:5px;}
+#facecard ul li				{-khtml-user-select:none;-moz-user-select:none;float:left;width:118px;border:1px solid #ddd;height:95px;margin:4px;text-align:center;}
+#facecard ul li h1		{position:relative;padding:6px;} /* friend image */
+#facecard ul li h2		{position:relative;padding:2px;font-size:10px;font-color:#3b5998;} /* friend name */
+#facecard .card	{clear:none;} /* makes our card system work */
+.checkered						{position:absolute;margin-left:98px;margin-top:5px;}
+.blueselect 					{background-color:#caf7ff;border: 1px solid #d4dae8;}
+
+
+/**************************************************************************************************************/
+/**************************************** TOP SECTION CARD LAYOUT DEFINITIONS ***************************************/
+/**************************************************************************************************************/
+#tip							{position:relative;width:530px;clear:both;} /* margin-bottom:10px;*/
+#tip .tipbox			{float:left;padding:5px 5px 0px 5px;width:500px;margin-bottom:5px;}
+#tip .social			{border-bottom:2px solid #d4dae8;background-color:#eceff6;}
+#tip .socialyel		{border-bottom:2px solid #f9e1c0;background-color:#fff8d2;}
+#tip .product			{border-bottom:2px solid #f9c0c0;background-color:#ffd2d2;}
+#tip h1 					{font-size:14px;font-weight:bold;color:#444;padding-bottom:3px;}
+#tip .divider			{border-bottom: 1px solid #cecece; padding-bottom: 3px;}
+#tip .dividertop	{border-bottom: 1px solid #cecece; padding-top: 3px;}
+#tip p						{width:500px;float:left;padding:3px 0px 3px 0px;font-size:12px;font-weight:normal;color:#555;}
+#tip a						{font-size:11px;padding-left:20px;} /* show full tip link */
+#tip .footer 			{width:500px;text-align: center;font-size: 11px;color:#999;}
+#tipLong p				{width:380px;float:left;padding:6px;font-size:11px;font-weight:normal;color:#555;}
+#tipLong img			{width:100px;float:left;padding:4px;}
+/* use class 'rightlink' to put in little 'see more' links */
+
+/**************************************************************************************************************/
+/**************************************** FRIEND-SPECIFIC FEED OF DATA ****************************************/
+/**************************************************************************************************************/
+/******************** upon selecting card, these drop down to tell you about your friend **********************/
+/**************************************************************************************************************/
+
+/** NEEDS
+ * editorialize content, to limit size of feed 
+ * UI elements for multiple datatype views
+ * support larger notes with multi-line classes (twoline currently not implemented) 
+ * cleanup on hovering (seriously, hoverCraft?)
+ * so many subclasses, like so many other parts of code; clean this!
+ * probably 50% useless classes here.
+**/
+
+.suggestion-feed-items-all 	{display:none;clear:both;left:0px;width:510px;background-color:none;}
+.feed-item 									{width:510px;height:22px;background-color:none;} /** now these are always selected, so make bg blue **/
+/* note options highlighter will go to 530px with the -20px on the right; 510 length is for blue highlights */
+
+.feed-item.first 						{margin-top:5px;}
+.feed-item.twoline					{margin-bottom:10px;}
+
+.feed-item-date 						{-khtml-user-select:none;-moz-user-select:none;float:left;font-size:10px;width:55px;text-align:right;padding-top:2px;padding-right:5px;color:#777;}
+.feed-item-icon							{-khtml-user-select:none;-moz-user-select:none;float:left;padding-top:0px;width:16px;padding-right:5px;}
+.feed-item-text 						{float:left;padding-top:1px;width:385px;color:#333;} 
+/* this does not do more than one line of text currently - need to fix for diatribe-length notes; also increase quickinput maxlength*/
+
+
+/* something broke this and needed my attention Nick 11/19 */
+/*.feed-item-edit 						{display:none;position:absolute;right:-20px;width:60px;font-size:9px;z-index:3;}*/
+.feed-item-edit 						{display:none;position:absolute;right:2px;width:60px;font-size:9px;z-index:3;}
+
+.feed-item-edit a						{display:block; position:absolute; background: url(../images/story_editor_icon.gif) no-repeat scroll right 0;height:15px;padding:3px 22px 0 4px;right:0px;}
+.feed-item-edit a.feed_selected,
+.feed-item-edit a:hover 		{background-position:right -18px;display:block;} 
+
+.suggestion-suggestion .selected	{padding-top:0px;top:0px;}
+.suggestion-actions 							{color:#333;top:3px;}
+.suggestion-actions a							{color:#3b5998;font-size:11px;font-weight:normal;}
+.suggestion-lastcontact 		 			{font-size:10px;padding-left:5px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight: normal;color: #999;}
+.suggestion-lastcontact-selected	{font-size:10px;padding-left:8px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight: normal;color: #999;}
+
+.suggestion-action,
+.suggestion-action-add 						{float:right;width:185px;padding-right:5px;font-size:10px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight:bold;color:#666;}
+.suggestion-action-selected				{float:right;width:150px;text-align:right;padding-right:5px;font-size:11px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight: bold;color:#3b5998;}
+.suggestion-action-add .starrating{float: right; width:105px;}
+.suggestion-slider-add	 					{float:right;width:250px;text-align:right;padding-right:5px;font-size:10px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight:bold;color:#666;}
+
+.suggestion-text, 
+.suggestion-text-selected 				{float:left;padding-left:5px;padding-top:5px;width:300px;font-size:11px;font-family: Tahoma, Verdana, Arial, sans-serif;color:#666;}
+.suggestion-text-add							{float:left;padding-left:5px;padding-top:5px;width:200px;font-size:11px;font-family: Tahoma, Verdana, Arial, sans-serif;color:#666;}
+
+.suggestion 												{position:relative;left:0px;top:0px;width:500px;border:1px solid #fff;}
+.suggestion:hover  									{border: 1px solid #000;z-index: 1;}       
+.suggestion-body 	 									{position:relative;width:500px;right:0px;} 
+
+.suggestion-container								{float:left;width:468px;}
+.suggestion-image										{float:left;}
+
+.suggestion-name 		  							{float:left;width:300px;padding-left:5px;top: 0px;font-size: 12px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight: bold;}
+.suggestion-name-selected 					{float:left;width:300px;padding-left:5px;top: 0px;font-size: 12px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight: bold;}
+.suggestion-name-add 	 							{float:left;width:200px;padding-left:5px;top: 0px;font-size: 12px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight: bold;}
+
+.suggestion-lastcontact 		 				{font-size:10px;padding-left:5px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight: normal;color: #999;}
+.suggestion-lastcontact-selected		{font-size:10px;padding-left:8px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight: normal;color: #999;}
+
+.suggestion-text-specific						{font-weight: bold;}
+
+.unselected	{height:75px;}
+
+.suggestion-feedtype 								{clear:both;position:relative;width:518px;background-image:url(../images/hr.gif);background-repeat:repeat;}
+.suggestion-view-selector 					{float:left;width:10px;padding-left:8px;margin-right:-8px;padding-top:5px;background-color:#FFF;}
+.suggestion-view-text 							{position:relative;;font-family: Tahoma, Verdana, Arial, sans-serif;font-size: 10px;left: 6px;font-weight: bold;background-color: #FFF;color: #888;padding-left: 10px;padding-right: 10px;}
+
+.suggestion-add-items-all {position: relative;left:0px;width: 518px;height:22px;}
+.add-item-left 						{position:absolute;left:10px;top:0px;width:250px;height:22px;}
+.add-item-right						{position:absolute;;right:0px;top:0px;width:250px;height:22px;}
+.add-item-date 						{position:absolute;font-family: Tahoma, Verdana, Arial, sans-serif;font-size: 10px;left: 5px;width: 60px;text-align: right;color: #777;}
+.add-item-icon 						{position:absolute;left: 73px;	width: 14px;}
+.add-item-text 						{position:absolute;font-family: Tahoma, Verdana, Arial, sans-serif;font-size: 11px;left: 98px;padding-top: 0px;width: 180px;text-align: left;color: #333;}
+#facebox .b {
+  background:url(../images/facebox/b.png);
+}
+
+#facebox .tl {
+  background:url(../images/facebox/tl.png);
+}
+
+#facebox .tr {
+  background:url(../images/facebox/tr.png);
+}
+
+#facebox .bl {
+  background:url(../images/facebox/bl.png);
+}
+
+#facebox .br {
+  background:url(../images/facebox/br.png);
+}
+
+#facebox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  text-align: left;
+}
+
+#facebox .popup {
+  position: relative;
+}
+
+#facebox table {
+  border-collapse: collapse;
+}
+
+#facebox td {
+  border-bottom: 0;
+  padding: 0;
+}
+
+#facebox .body {
+  padding: 10px;
+  background: #fff;
+  width: 370px;
+}
+
+#facebox .loading {
+  text-align: center;
+}
+
+#facebox .image {
+  text-align: center;
+}
+
+#facebox img {
+  border: 0;
+  margin: 0;
+}
+
+#facebox .footer {
+  border-top: 1px solid #DDDDDD;
+  padding-top: 5px;
+  margin-top: 10px;
+  text-align: right;
+}
+
+#facebox .tl, #facebox .tr, #facebox .bl, #facebox .br {
+  height: 10px;
+  width: 10px;
+  overflow: hidden;
+  padding: 0;
+}
+
+#facebox_overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+}
+
+.facebox_hide {
+  z-index:-100;
+}
+
+.facebox_overlayBG {
+  background-color: #000;
+  z-index: 99;
+}
+
+* html #facebox_overlay { /* ie6 hack */
+  position: absolute;
+  height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+
+/* Feedback form CSS */
+
+#comments .submit {position:relative; top:10px; margin-bottom:5px;}
+#commentForm .header {font-weight:bold;position:relative;top:10px;font-size:15px;left:5px;}
+#commentForm .textarea {height:150px;margin-top:10px;width:450px;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:11px;}
+#commentForm img {float:left;}
+#commentForm .submit {font-weight:bold;}
+
+.multipage {-khtml-user-select:none;-moz-user-select:none;position:relative;right:20px;padding-top:6px;} /*this is class, for right next to search */
+#app .pagerpro {margin:0 0 0;float:right;list-style-image:none;list-style-position:outside;list-style-type:none;padding:0;}
+/*.pagerpro{float:right;list-style:none;margin:0;padding:0;}*/
+
+#app .pagerpro li{display:inline;float:left;}
+#app .pagerpro a{display:block;padding:3px;padding-bottom:2px;}
+#app .pagerpro a:hover{background:#3B5998;border-color:#D8DFEA;border-bottom:1px solid #3B5998;color:#fff;text-decoration:none;}
+#app .pagerpro a:hover{color:#fff;}
+#app .pagerpro .current a,
+#app .pagerpro .current a:hover{background:transparent;border-color:#3B5998;border-bottom:2px solid #3B5998;color:#3B5998;font-weight:bold;padding-left:2px;padding-right:2px;}
+#app .pagerpro a.disabled{color:#999;cursor:default;background:transparent;border:none;}
+#app .pagerpro a {display:block;padding:3px 3px 2px;}
+
+
+
+.pymk #pymk .friend_grid_row {padding:0 0 8px;margin:0 0 8px;width:200px;overflow:hidden;border-bottom:1px solid #e5e5e5;}
+.pymk #pymk .friend_grid_row.last {border-bottom:none;margin:0;padding:0;}
+.pymk #pymk .friend_grid_col {margin:0;width:100px;}
+.pymk #pymk .friend_grid_col .fg_action_hide {margin:1px 0 0;}
+.pymk #pymk .friend_grid_col .fg_action_view{display:none;}
+.pymk #pymk .friend_grid_col .fg_action_hide h5 a{background:url(../images/spr_pymk_x_f7.gif) 0px 0px no-repeat;}
+.pymk #pymk .friend_grid_col .fg_action_hide h5 a:hover{background:url(../images/spr_pymk_x_f7.gif) -11px 0px no-repeat;}
+.pymk #pymk .friend_grid_col .fg_links{padding:0 0 0 7px;width:210px;}
+.pymk #pymk .friend_grid_col .fg_name,
+.pymk #pymk .friend_grid_col .fg_action_add{padding-bottom:1px;}
+.pymk #pymk .friend_grid_col .fg_name{font-size:11px;font-weight:bold;}
+.pymk #pymk .friend_grid_col .fg_name span{color:#333;}
+.pymk #pymk .friend_grid_col .fg_explanation p{margin:0;padding:0;color:#999;}
+.pymk .friend_guess{margin:1px 0px 6px 0px;float:left;width:150px;}
+.pymk .friend_guess .fg_img{float:left;width:50px;}
+.pymk .friend_guess .fg_links{float:left;padding:0px 3px 0px 7px;width:90px;}
+.pymk .friend_guess .fg_links .name{font-size:11px;padding-bottom:2px;}
+.pymk .friend_guess .fg_links .add_link .inactive{color:#666;}#tooltip {
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid #d89000;
+	background-color: #fffc9c;
+	padding: 5px;
+	opacity: 0.85;
+	width: 180px; /*nick is bored */
+}
+
+#tooltip h3, #tooltip div { margin: 0; }
+
+#tooltipQuickinput {
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid #d89000;
+	background-color: #fffc9c;
+	padding: 5px;
+	margin-left:60px;
+	margin-top:55px;
+	opacity: 0.85;
+	width: 428px;
+	
+}
+
+/* because ie7 is a unique kind of suck for absolute positions. hasLayout? check. hasHack? now also check. */
+.ie7 #tooltipQuickinput { 
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid #d89000;
+	background-color: #fffc9c;
+	padding: 5px;
+	margin-left:-471px;
+	margin-top:55px;
+	opacity: 0.85;
+	width: 428px;
+}
+.ie #tooltipQuickinput { 
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid #d89000;
+	background-color: #fffc9c;
+	padding: 5px;
+	margin-left:-471px;
+	margin-top:55px;
+	opacity: 0.85;
+	width: 428px;
+}
+#tooltipQuickinputDataTypes {
+	position: absolute; /* float left */
+	z-index: 3000;
+	border: 1px solid #d89000;
+	background-color: #fffc9c;
+	padding: 5px;
+	opacity: 0.95;
+	width: 190px;
+	text-align: left;
+	right: -202px;
+	top: -6px;
+}
+/**************************************************************************************************************/
+/*** MAIN.CSS - Stuff we use to lay the entire site out *******************************************************/
+/**************************************************************************************************************/
+/**************************************************************************************************************/
+
+
+/**************************************************************************************************************/
+/*************************************** SLUTTY CLASSES: THEY GET AROUND **************************************/
+/**************************************************************************************************************/
+/** NEEDS
+ * more, so we can have fewer elaborate classes and fewer classes in general
+**/
+
+*												{margin:0;padding:0;} /* kills browser wonk; this may require various old css to be updated 11/15 nick */
+body										{background:#fff;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:11px;margin:0px;padding:0px;text-align:left;direction:ltr;}      
+h1, h2, h3, h4, h5			{font-size:13px;color:#333;margin:0px;padding:0px;}                                                                                                                                                                 
+h1											{font-size:14px;}                                                                                                                                                                                                   
+h4, h5									{font-size:11px;}                                                                                                                                                                                                   
+p												{font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;text-align:left;}                                                                                                                   
+a												{cursor:pointer;color:#3b5998;outline-style:none;-moz-outline-style:none;text-decoration:none;}                                                                                                                    
+a:hover									{text-decoration:underline;}                                                                                                                                                                                        
+img											{border:0px;} /* not sure why image borders are EVER a good idea */                                                                                                                                                 
+
+/* text-based */
+.smalltext							{font-size:10px;font-weight: bold;color: #666;font-family: "Lucida Sans", Tahoma, Verdana, Arial, sans-serif;} 
+/*.snooze									{color:#999!important;}		CODE REVIEW: lose the !importants; also, making text should be generic as all hell **/
+
+/* layout-based */
+.icon 									{float:left;margin-right:6px;width:16px;}		/** gives space for 16px icons **/
+.sidebarIcon						{float:left;padding:3px 0px 0px 1px;margin-right:5px;width:16px;}
+.iconClose							{float:left;margin-right:4px;width:16px;}		/** gives space for 16px icons **/
+
+.selectmaster						{background-color:#e8f0f0;}
+.bg-ltblue							{background-color:#e8f0f0!important;}		/** CODE REVIEW: lose the importants **/
+.bg-grey								{background-color:#EEEEEE;}
+.hidden 								{display:none;}                                                                                                                                                                                                     
+
+.rightlink							{position:absolute;right:0px;padding-right:10px;text-align:right;width:100px;font-size:11px;font-weight:normal;}
+.stdlink a							{font-size:11px;color:#3b5998;font-weight:normal;}
+.floatlink 							{position:relative;right:8px;padding-top:1px;font-size:10px;}
+
+.editing								{background-color:#fff9d7;border:1px solid #e2c822;}
+.deleting								{background-color:#ffebe8;border:1px solid #dd3c10;}
+
+.loading								{clear:both;position:relative;width:760px;padding:200px 150px;}
+.loading .quoteHome			{text-align:center;font-size:12px;color:#666;}
+.connectButton {position:relative;width:217px;left:12px;padding-bottom:15px;}
+.ui-tabs-hide { display: none !important; }
+
+
+/**************************************************************************************************************/
+/****************************************** STANDALONE WEBSITE CSS ********************************************/
+/**************************************************************************************************************/
+.standAloneCenter									{margin-right:auto;margin-left:auto; width:793px;}
+.standAlone												{background-color:#cfd6e6!important;background:url(../images/sa_background.png) scroll repeat-x; background-size:758px;border-right:7px solid #3d6dd2;padding-left:20px;padding-right:8px;padding-bottom:20px;}                                                           
+#header .standAloneHeader	{}
+#header .saHeaderBackground {position:relative;padding-bottom:11px;width:793px;background:url(../images/sa_header.png) scroll no-repeat 0% 0%;}
+#header .saCurrentlocation{float:left;font-size:16px;color:#3d6dd2;padding:37px 0 23px 350px;cursor:pointer;}
+#header .saFriendSearchBox{float:right;padding:30px 15px 0px 0px;}
+#header .saFriendSearchBox input	{color:#999;font-size: 11px;border: 1px solid #BDC7D8;font-size:11px;padding:3px;}
+#header .fbConnect							{float:right;margin-right:15px;padding-top:8px;}
+#header .fbConnect .image				{float:right;margin-left:5px;}
+#header .fbConnect .text				{float:right;padding:2px;text-align:right;font-weight:normal;font-size:11px;}
+#header .fbConnect .text .saHeaderTextWelcome 		{color:#de9406;font-weight:bold;text-align:right;padding-bottom:2px;}
+#header .fbConnect .text .saHeaderTextLast				{color:#999;text-align:right;padding-bottom:2px;}
+
+/**************************************************************************************************************/
+/******************************************** FACEBOOK APP CSS ************************************************/
+/**************************************************************************************************************/
+#header .normalHeader		{position:relative;width:758px;height:38px;display:block;}
+#header .friendSearchBox 				{height:20px;right:0px;top:2px;z-index:1;position:absolute;}
+#header .friendSearchBox input	{color:#999;font-size: 11px;border: 1px solid #BDC7D8;font-size:11px;padding:3px;}
+#presenceSection a.video {color:#0065cc;position:absolute; left:240px;top:3px; font-size:14px; font-weight:bold;padding-right: 10px; background: url(../images/about/morearrow_08c.gif) no-repeat 100% 60%; zoom: 1;}
+/**************************************************************************************************************/
+/**************************************** ELABORATE COMPATIBILITY HACKS ***************************************/
+/**************************************************************************************************************/
+/** NEEDS
+ * make IE7 work 
+ * make attempt at IE6, fail, and then give up in absolute frustration
+**/
+.clearfix:after					{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;} .clearfix{display:inline-block;} html[xmlns] .clearfix{display:block;} * html .clearfix{height:1%;}
+
+#header									{}
+#body										{position:relative;width:758px;text-align:left;}
+#contactbody						{float:left;width:533px;}
+#side										{float:left;width:217px;margin-left:8px;}
+
+/*#footer									{clear:both;position:relative;width:758px;margin-top:20px;}*/
+/*#footer									{clear:both;float:right;width:758px;margin-top:420px;} bs version testing
+#footer p								{font-size:11px;}
+#footer .footerquotes		{font-size:10px;color:#999;text-align:center;width:758px;} deprecated Nick 11/21 fixed ie7bug
+*/
+#comments								{font-size:11px;}
+
+
+/**************************************************************************************************************/
+/*********************************************** HOME PAGE CLASSES ********************************************/
+/**************************************************************************************************************/
+
+#menuNavigation .friendMapCount		{padding-left:12px;height:14px;}
+#menuNavigation .friendListCount	{padding-left:15px;height:14px;}
+#menuNavigation .l						{background:url(../images/pillL.png) repeat left top;padding-left:6px;width:6px;height:14px;}
+#menuNavigation .r						{background:url(../images/pillR.png) repeat right top;padding-right:6px;width:6px;height:14px;}
+#menuNavigation .bg						{background:url(../images/pillBG.png) repeat top left;color:#fff;font-weight:bold;height:14px;}
+
+.fullWidthHeading			{clear:both;width:100%;padding-top:5px; padding-bottom:5px;border-bottom:solid #ccc 1px;background-color:#f8faff;}
+
+.homeDivider						{clear:both;width:560px;padding-top:5px; padding-bottom:5px;border-bottom:solid #ccc 1px;}
+.homeDivider h1					{float:left;font-size:16px;font-weight:bold;color:#333;}
+.homeDivider h2					{float:left;font-size:14px;padding-left:5px;font-weight:bold;color:#333;}
+.homeDivider h3					{float:right;font-size:10px;font-weight:normal;color:#666;padding:5px 0px 0px 0px;}
+.homeDivider h4					{float:right;font-size:10px;font-weight:normal;color:#333;}
+.homeDivider p					{float:left;font-size:11px;font-weight:normal;color:#777;padding:5px 0 0 25px;}
+#homeWelcome,					 
+#homeKeepup,					 
+#homeUpcomingWeek,		 
+#homeSocialHistory			{clear:both;float:left;}
+#homeSocialTip					{clear:both;margin-bottom:10px;float:left;}
+#homeProductTip					{clear:both;margin-bottom:10px;float:left;}
+#autoNotify							{clear:both;float:left;background-color:#fff9d7;border-bottom:1px solid #e2c822;margin-right:40px;display:none;}
+#autoNotify p						{padding:6px;}
+.tipListShort						{width:510px;margin-top:5px;} /* for one or two line tips! */
+.tipText								{width:475px;float:left;font-size:11px;color:#b97b00;padding-top:1px;}
+.tipText a							{padding-left:20px;}
+.tipProductText					{width:475px;float:left;font-size:11px;color:#333;padding-top:1px;}
+
+.upcomingListItem,
+.historyListItem 				{clear:both;width:510px;height:20px;padding-top:2px;}
+
+.alertEmpty							{clear:both;margin:10px 0px;}
+.upcomingListEmpty,
+.historyListEmpty 			{clear:both;width:510px;margin-top:10px;}
+
+.listExplanation				{float:left;color:#555;font-size:11px;padding:5px 0px 5px 5px;}
+.listExplanation ul			{padding:10px 0px 10px 20px;}
+.listExplanation ul li	{padding:3px 0px;}
+.alertExplanation				{width:480px;float:left;color:#555;font-size:11px;padding-bottom:10px;}
+.alertExplanation img		{padding-top:2px;}
+.listDate								{float:left;width:55px;color:#888;font-size:10px;padding-right:5px;padding-top:2px;text-align:right;}
+.listText								{float:left;width:400px;font-size:11px;padding-top:1px;}
+.alertListItem					{clear:both;width:510px;height:22px;margin-top:5px;}
+.alertPictureItem				{clear:both;margin-top:10px;margin-bottom:0px;text-align:center;}
+/*.alertPicture						{float:left;overflow:hidden;margin:0px 0px 5px 0px;padding:3px 4px 0px 4px;}	
+.alertPicture:hover			{background-color:#F8FAFF;cursor:pointer;}
+.alertPicture p					{text-align:center;font-size:10px;color:#999;overflow:hidden;width:60px;height:30px;}*/
+.alertPicture a:hover		{text-decoration:none;}
+.alertPicture a img			{border:1px solid #CCCCCC;padding:3px;margin-bottom:2px;}
+
+
+/* NEW alertPicture classes for upcoming TICK OFF view */
+.alertPicture 											{float:left;width:175px;height:58px;padding:3px 4px;margin:0 2px 5px;overflow:hidden;background-color:#e5eaf6;}
+.alertPicture:hover									{background-color:#e5eaf6;}
+.alertPicture img										{float:left;}
+.alertPicture p 										{float:left;width:111px;padding:2px 0 0px 6px;text-align:left;font-weight:normal;color:#999;font-size:10px;margin-bottom:0px !important;}
+.alertPicture p.alertName 					{color:#666;font-size:11px;font-weight:bold;line-height:1.1;overflow-y:hidden;height:24px;}
+.alertPicture p.alertAction 				{padding-top:0px;}
+.alertPicture p.alertAction a.done 	{-khtml-user-select:none;-moz-user-select:none;font-size:11px;font-weight:bold;}
+.alertPicture p.alertAction a.snooze{-khtml-user-select:none;-moz-user-select:none;padding:1px 0 0 45px;}
+
+#suggestionMoreLink			{-khtml-user-select:none;-moz-user-select:none;clear:both;font-weight:bold;font-size:12px;width:100%;border-bottom:1px solid #ddd;padding:5px;}
+
+
+
+.alertZero							{clear:both;width:490px;margin:10px 0px 5px 0px;text-align:center;}
+.alertZero .zeroStep		{width:140px;float:left;padding:5px;}
+.alertZero .zeroStep h4	{font-size:12px;font-weight:bold;color:#666;padding-bottom:20px;}
+.alertZero .zeroItemHolder{padding:0px 20px;font-size:11px;font-weight:bold;color:#666;}
+.alertZero .zeroItemHolder p {padding-top:6px;font-weight:normal;text-align:center;}
+.alertZero .zeroItem		{width:96px;margin:0px 2px 5px 0px;padding:4px;background-color:#f7f7f7;}
+.alertZero .zeroNewLine {clear:both;width:490px;padding:5px;color:#666;border-bottom:1px solid #ddd;}
+.alertZero .zeroEndLine {clear:both;width:475px;padding:5px;color:#666;border-top:1px solid #ddd;}
+.morePictures						{padding-top:20px;font-size:10px;}		
+.firstPicture						{margin-left:15px;} /* first picture in the upcoming suggestions */ 
+.alertIcon							{float:left;margin-left:8px;margin-right:6px;width:16px;padding-top:2px;}		/** gives space for 16px icons **/
+.alertText							{float:left;width:350px;font-size:10px;color:#777;padding-top:3px;}
+.alertText a						{font-weight:bold;font-size:11px;}
+.alertLinkButton				{float:left;width:130px;text-align:center;}
+.listFirst							{margin-top:8px;}
+.listSecond							{padding-top:8px;border-top:solid #e9e9e9 1px;}
+.inputButton						{width:130px;margin-right:0;padding:1px 8px;background-color:#3B5998;border-color:#D9DFEA #0E1F5B #0E1F5B #D9DFEA;border-style:solid;border-width:1px;color:#FFFFFF;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:11px;}
+
+.homeFeedItem 								{position:relative;width:575px;padding:2px 0px;margin:2px 0px;}
+.homeFeedItem:hover						{background-color:#d4e0ff !important;}
+.homeFeedItem.child						{position:relative;margin:4px 0px 2px 15px;width:560px;}
+.homeFeedChildBackground			{float:left;width:500px;background-color:#eceff5;}
+/*.homeFeedItem.child 					{position:relative;width:470px;margin:2px 0px 2px 15px;padding-top:4px;background-color:#eceff5;} nick 12/11 edit */
+.homeNoteChild			 					{position:relative;width:540px;margin:0px 0px 0px 15px;}
+
+.hoverCraft 								{display:block!important;} /** this shows the 'edit' button when hovering over feed items; added to class feedItemEdit **/
+
+
+/**************************************************************************************************************/
+/******************************************* FEEDBACK TO USER CLASSES *****************************************/
+/**************************************************************************************************************/
+
+.feedItemDeleting					{background-color:#ffeeee;} /* when you delete a feed item */
+.feedItemUpdating					{position:absolute;display:block;right:15px;} /* replaced homeFeedItemEdit 
+/*color:#fff;background:transparent url(../images/indicator_blue_small.gif) no-repeat scroll 0px 0px;*/
+/**************************************************************************************************************/
+/*********************************************** FEED ITEM CLASSES ********************************************/
+/**************************************************************************************************************/
+
+
+#app .feedItem:hover								{background-color:#d4e0ff !important;}
+#app .feedItem 											{clear:both;float:left;width:475px;padding:2px 0px;margin:2px 0px;}
+#app .feedItem.child 								{clear:both;float:left;width:460px;margin:4px 0px 2px 15px;background-color:#eceff5;}
+#app .noteChild			 								{clear:both;float:left;width:460px;margin:0px 0px 0px 15px;}
+
+#app .feedItemIcon									{float:left;padding:0px 6px 0px 2px;	width:16px;}
+#app .feedItemWrapper								{float:left;width:395px;padding:1px 0;}
+#app .feedItemWrapper.child					{width:380px;}
+#app .feedItemText 									{font-size:11px;color:#333;} 
+#app .feedItemText .preText					{font-weight:bold;color:#444;padding:0px;font-size:11px;}
+#app .feedItemText .name						{color:#3b5998;padding:0px;font-size:11px;}
+#app .feedItemText .date						{padding:0px 0px 0px 8px;	font-size:9px;color:#777;}
+#app .feedItemText .hoverDate 			{color:#444;font-size:11px;padding:0px;}
+#app .feedItemText .hoverDate:hover	{color:#F33;text-decoration:none;}
+#app .feedItemText .note						{padding:0px 0px 0px 8px;	font-size:9px;color:#3b5998;}
+
+#app .feedItemDate 									{padding:0px 0px 0px 8px;	font-size:10px;color:#777;}
+
+#app .feedItem a										{padding-left:8px; font-size:10px;color:#3b5998;}
+
+#app .homeFeedItemEdit a,
+#app .feedItemEdit a								{-khtml-user-select:none;-moz-user-select:none;display:block; position:absolute; background: url(../images/story_editor_icon.gif) no-repeat scroll right 0;height:15px;margin-top:1px;padding:1px 22px 2px 4px;right:0px;font-size:9px;}
+
+#app .feedItemEdit,
+#app .homeFeedItemEdit 							{display:none;	position:absolute;right:0px;width:40px;z-index:3;}
+#app .feedItemEdit a.feed_selected,
+#app .feedItemEdit a:hover,
+#app .homeFeedItemEdit a.feed_selected,
+#app .homeFeedItemEdit a:hover 			{background-position:right -18px;display:block;}
+
+#app .homeFeedItemEdit.child				{position:absolute;right:0px;font-size:9px;z-index:3;} /* nick 12/11 this class now redundant; no sizing diff needed */
+
+
+#app .homeFeedLine									{position:relative;width:500px;padding:5px 0px;margin:0px;}
+#app .homeFeedLineDate							{float:left;font-size:10px;color:#aaa;font-weight:bold;}
+#app .homeFeedLineLine							{float:left;border-bottom:1px solid #ccc;width:100%;}
+
+#app .dateFirstFeedItem							{position:relative;width:570px;padding:2px 0px;margin:2px 0px;}
+#app .dateFirstFeedItem:hover				{background-color:#d4e0ff !important;}
+#app .dateFirstFeedItemDate					{float:left;width:50px;font-size:10px;padding:2px 6px 0px;color:#888;text-align:right;}
+#app .dateFirstFeedItemIcon			 		{float:left;padding:1px 6px 0px 2px;width:16px;}
+#app .dateFirstFeedItemWrapper	 		{float:left;width:430px;padding:2px 0px;}
+#app .dateFirstFeedItemText 			 	{font-size:11px;color:#444;}
+
+
+#app .homeFeedItemIcon							{float:left;padding:1px 6px 0px 2px;width:16px;}
+#app .homeFeedItemWrapper						{float:left;width:490px;padding:2px 0px;}
+#app .homeFeedItemWrapper.child			{float:left;width:475px;padding:2px 0px;} /*nick 12/11 edit from 440px */
+#app .homeFeedItemText 							{font-size:11px;color:#444;} 
+#app .homeFeedItemText .name				{color:#3b5998;padding:0px;font-size:11px;}
+#app .homeFeedItemText .preText			{font-weight:bold;color:#444;padding:0px;font-size:11px;}
+#app .homeFeedItemText .date				{padding:0px 0px 0px 8px;	font-size:9px;color:#777;}
+#app .homeFeedItemText .hoverDate 	{color:#444;font-size:11px;padding:0px;}
+#app .homeFeedItemText .hoverDate:hover{color:#F33;text-decoration:none;}
+#app .homeFeedItemText .note				{padding:0px 0px 0px 8px;	font-size:9px;color:#3b5998;}
+
+/* homeFeedItemEdit is the hover over options box */
+
+/* inlineComposer is the info above the composer when you edit a feedItem */
+.inlineComposer											{width:556px;clear:both;}
+.inlineComposerChild								{width:521px;clear:both;}
+.inlineComposerChild textarea				{height:17px;width:411px;font-size:13px;overflow:hidden;resize:none;padding:3px;margin:0px;}
+
+.inlineComposerName									{float:left;color:#666;font-size:11px;font-weight:bold;padding:2px 0 5px;}
+.inlineComposerInfo									{float:left;color:#888;font-size:10px;padding:3px 0px 5px 20px;}
+.inlineComposerCancel								{float:right;color:#888;font-size:10px;padding-right:10px;}
+.inlineComposerSubmit								{padding:3px 10px!important;}
+.inlineComposer textarea						{height:17px;width:466px;font-size:13px;overflow:hidden;resize:none;padding:3px;margin:0px;}
+
+.inlineFriendDetailComposer					{clear:both;} /* IE7 bug: the composer has a top padding or margin */
+.inlineFriendDetailComposer textarea{height:17px;width:356px;font-size:13px;overflow:hidden;resize:none;}
+
+.inlineFriendDetailChildComposer		{clear:both;} /* IE7 bug: the composer has a top padding or margin */
+.inlineFriendDetailChildComposer textarea {height:17px;width:341px;font-size:13px;overflow:hidden;resize:none;}
+
+.inlineComposerIcon					 				{padding-top:2px;}
+.floatLeft									 				{float:left;}
+.floatRight									 				{float:right;}
+
+.dialog_buttons 										{margin-bottom:5px;}
+.morecontent_toggle_link						{overflow:hidden;padding-bottom:20px;}
+.morecontent_toggle_link a					{background:transparent url(../images/up_arrow_grey_small.gif) no-repeat left 2px;color:#666;display:block;font-size:9px;font-weight:bold;margin-top:6px;padding:2px 10px 2px 12px;}
+.morecontent_toggle_link.more_link a{background-image:url(../images/down_arrow_grey_small.gif);}
+.morecontent_toggle_link a:hover		{background-color:#e9e9e9;}
+
+/**************************************************************************************************************/
+/********************************************* FRIENDLIST CLASSES *********************************************/
+/**************************************************************************************************************/
+#listBatch								{margin:6px 0px;padding:4px 0px;border-top:1px solid #bbb;border-bottom:1px solid #bbb;background-color:#ffe;}
+#listBatchName						{float:left;width:160px;font-size:11px;font-weight:bold;margin:1px 6px 0px 0px;padding:2px 0px 2px 0px;}
+#listBatchReminder				{float:left;width:106px; font-size:11px;font-weight:bold;margin:1px 6px 0px 0px;padding:2px 0px 2px 2px;}
+#listBatchStars						{float:left;width:65px; font-size:11px;font-weight:bold;margin:1px 6px 0px 0px;padding:2px 0px 2px 2px;}
+#listBatchDescription			{float:left;width:175px;font-size:11px;font-weight:bold;margin:1px 0px 0px 0px;padding:2px 0px 2px 2px;}
+
+
+#friendListDivider				{clear:both;width:100%;padding-bottom:5px;border-bottom:solid #ddd 1px;} /* border-top:solid #ccc 1px; */
+#friendListDivider h1, 
+#friendListDivider h2			{float:left;}
+#friendListTip						{width:540px;padding:5px 10px 0px;margin:10px 0px 10px 0px;}
+#friendListTip p					{padding-bottom:2px;margin-bottom:0;}
+#friendListTipBottom, 
+#tagListTipBottom					{clear:both;width:540px;padding:4px 10px;margin:15px 0px 0px;}
+#mapTipExampleVideo				{clear:both;padding:0;margin:0;}
+#tagSideTip 							{clear:both;width:125px;padding:4px 5px;margin:5px 0px;}
+
+#friendListHeader					{margin:6px 0px 0px;font-weight:bold;width:571px;border-right:1px solid #ddd;} /*border-bottom:solid #e9e9e9 1px;*/
+#friendListHeader p				{margin-top:2px;color:#333;}
+
+#listHeaderFullitem				{float:left;width:353px;margin:1px 0px 0px;padding:2px 0px 2px 2px;} 
+
+#listHeaderName, #listHeaderReminder, #listHeaderStars, #listHeaderNext, #listHeaderLast, #listHeaderCheck, #listHeaderMapName, #listHeaderMapAddress
+{
+	float:left;margin:1px 0px 0px;padding:2px 0px 4px 2px;border-right:1px solid #ddd;
+}
+
+#listHeaderFullitem a, #listHeaderName a, #listHeaderReminder a, #listHeaderStars a, #listHeaderNext a, #listHeaderLast a, #listHeaderCheck a, #listHeaderMapName a, #listHeaderMapAddress a
+{
+	-khtml-user-select:none;-moz-user-select:none;color:#333;float:left;margin:2px 0 0 3px;
+}
+
+#listHeaderName						{width:148px;padding:2px 2px 4px 5px;}
+
+#listHeaderReminder				{width:162px;}
+#listHeaderStars					{width:65px; }
+#listHeaderNext						{width:78px; } 
+#listHeaderLast						{width:75px;border-right:0px !important; } 
+#listHeaderCheck					{width:20px;border-right:1px solid #fff; }
+#listHeaderMapName				{width:175px;padding:2px 2px 4px 5px;}
+#listHeaderMapAddress			{width:386px;border:0px;}
+
+.listHeaderOptions				{position:relative;right:0px;width:60px;font-size:9px;z-index:3;}
+.listHeaderOptions a			{display:block; position:absolute; background: url(../images/story_editor_icon.gif) no-repeat scroll right 0;height:15px;padding:3px 22px 0 4px;right:0px;}
+.listHeaderOptions a:hover{background-position:right -18px;display:block;}
+
+#friendListFeedback 			{padding:4px 8px 0px; width: 550px; margin-bottom: 4px;}
+#friendListFeedback p			{float:left;}
+#friendListFeedback a 		{float:right;}
+
+
+
+/*	background:transparent url(../images/up_arrow_grey_small.gif) no-repeat right center;}
+*/
+.sortUp 								{background-color:#eceff6!important; background:transparent url(../images/up_arrow_grey_small.gif) no-repeat 96% 6px;border-bottom:2px solid #d4dae8;}
+.sortDown								{background-color:#eceff6!important; background:transparent url(../images/down_arrow_grey_small.gif) no-repeat 96% 6px;border-bottom:2px solid #d4dae8;}
+
+.tagListItem						{padding:2px 0px;font-size:11px;height:22px;}
+.tagListName						{float:left;width:165px;font-size:11px;margin:2px 0px;padding:1px 2px 0px 0px;}
+.tagListOptions					{float:left;width:290px;font-size:11px;padding:0px 0px 0px 0px;}
+.tagListOptions input 	{border:1px solid #BDC7D8;color:#999999;font-size:11px;padding:1px;}
+.tagListDelete					{float:right;width:65px;font-size:11px;padding:3px 5px 0px 2px;text-align:right;}
+
+.friendListItem					{padding:0px;font-size:11px;clear:both;width:571px;border-right:1px solid #ddd;}
+.friendListFullitem, .friendListName, .friendListReminder, .friendListStars, .friendListNext, .friendListLast, .friendListCheck {
+	float:left;font-size:11px;border-right:1px solid #ddd;padding:3px 2px 2px 5px;
+}
+
+.friendListFullitem			{width:353px;padding:1px 4px 0px 2px;} /* N12/15 full width, used in datatype view classes w/ only friendListName + this are used */
+
+.friendListName 				{width:143px;padding-left:10px;}
+.friendListReminder			{width:157px;}
+.friendListStars 				{width:60px;padding-bottom:6px;}
+.friendListNext 				{width:73px;}
+.friendListLast					{width:70px;border-right:0px !important;}
+.friendListCheck				{width:15px;border-right:1px solid #fff;background-color:#fff;padding-bottom:3px;}
+.sliderLeft				 			{float:left;margin-right:12px;width:55px;}	
+.sliderRight						{float:left;color:#777;}
+
+
+.parentListItem					{padding:2px 0px 2px 0px;margin:2px 0px;font-size:11px;color:#333;font-weight:bold;border-bottom:1px solid #ddd}
+.parentClosed						{background-color:#eee!important;background:transparent url(../images/up_arrow_grey_small.gif) no-repeat 99% 3px;border-top:1px solid #ddd;color:#777;}
+.parentOpen							{background:transparent url(../images/down_arrow_grey_small.gif) no-repeat 99% 17px;border-top:1px solid #ddd;padding:5px 0px;background-color:#f4f5fd;}
+              					
+
+.parentListLargeName		{float:left;font-size:14px;padding:0px 2px;}
+.parentListLargeName p	{font-size:11px;font-weight:normal;padding-left:1px;line-height:20px;}
+.parentListLargeName input 	{border:1px solid #BDC7D8;color:#999999;font-size:11px;margin:0px;padding:1px;}
+.parentListName					{float:left;font-size:11px;padding:1px 2px 0px 2px;}
+
+.doubleSort							{width:140px;}
+.oneAdditional					{width:320px;}
+.parentListAdditional		{float:left;padding: 2px 0px 0px 5px; font-size: 10px; font-weight: normal;}
+.parentListAction				{float:right;width:155px;text-align:right;}
+
+
+.childListItem					{position:relative;padding:2px 0px 2px 22px;font-size:11px;width: 550px; }
+.grandChildListItem			{position:relative;padding:0px 0px 2px 22px;font-size:11px;}
+.childListNotification	{float:left;width:482px;font-size:11px;color:#666;text-align:center;padding:10px 5px;}
+.childListName 					{float:left;width:160px;font-size:11px;padding:1px 2px 0px 2px;} /* N 1/29 updated for 20px wider */
+.childListData 					{float:left;width:335px;font-size:11px;padding:1px 2px 0px 2px;}
+.childListData ul	li		{list-style-type:none;}
+.childListData input 		{border:1px solid #BDC7D8;color:#999999;font-size:11px;padding:1px;}
+.childListAction				{display:none;position:absolute;right:5px;font-size:9px;z-index:3;}
+.childListAction a			{display:block; position:absolute; background: url(../images/story_editor_icon.gif) no-repeat scroll right 0;height:15px;padding:3px 22px 0 4px;right:0px;}
+.childListAction a:hover{background-position:right -18px;display:block;}
+
+
+
+/*Classes that deal with the rating of people using stars*/
+.star{float:left;width:12px; height: 12px; background:url('../images/stars.gif') no-repeat -36px 0px;}
+.star_hover{background-position:-12px 0px}
+.star_click{background-position:0px 0px}
+
+
+
+/**************************************************************************************************************/
+/*************************************************** MAPVIEW **************************************************/
+/**************************************************************************************************************/
+
+
+#mapView							{width:563px;height:330px;position:relative;background-color:#3b5998;margin-bottom:15px;}
+#listHeaderAddress		{float:left;width:290px;font-size:11px;margin:1px 6px 0px 0px;padding-left:2px;background-color:#eee;}
+.friendListAddress		{float:left;width:290px;font-size:11px;padding:1px 0px 0px 0px;}
+
+/**************************************************************************************************************/
+/******************************************* LAYOUT SCAFFOLDS/BASICS ******************************************/
+/**************************************************************************************************************/
+/** NEEDS
+ * reduce id-ness, esp if we re-use? Consider ego, superego.
+**/
+#loader 								{position:relative;left:250px;height:32px;width:32px;top:50px;background-image:url(../images/spinlarge.gif);}
+
+#header .currentlocation{-khtml-user-select:none;-moz-user-select:none;position: absolute;left:115px;top: 5px;font-size: 12px;font-weight: bold;color: #666666;}
+#header .header-links		{position:absolute;right:10px;top:5px;font-size:11px;color:#3B5998;font-family: Tahoma, Verdana, Arial, sans-serif;}
+#footer_ 								{position:absolute;left:0px;bottom:0px;width:760px;height:27px;}                                                                                                                                                    
+
+/** the top of the card list, used to tell what you're looking at, give you a cute icon, and hold the page turners **/
+#suggestion-whitespace 	{position: relative;top:0px;height:17px;width: 530px;}
+#suggestion-top					{position:relative;width:530px;}
+.smPadding							{padding-bottom:8px;}
+.headericon							{float:left;padding-right:6px;width:16px;}
+.total-suggestions			{-khtml-user-select:none;-moz-user-select:none;padding-top:1px;font-size: 12px;color: #666;float:left;width:350px;}
+
+#suggestion-holder 			{position:relative;width:533px;}
+#card_id 								{display:none;}
+
+/**************************************************************************************************************/
+/************************************ SEARCH BOX: FIND PEOPLE, FIND DATA **************************************/
+/************************************** (well, not quite yet on data) *****************************************/
+/**************************************************************************************************************/
+
+/** NEEDS
+ * Spyglass image
+ * MAYBE: 'X' to cancel/close
+ * MAYBE: FB-like drop-down menu to select friend / data type, etc 
+
+#header #searchFriends						{position:absolute:right:0px;top:0px;padding:3px 11px 3px 4px;width:175px;}
+#header #searchFriends .searchBox	{float:left;}
+#header #searchFriends #searchBoxInput {background:white;border:1px solid #315091;border-right:0px;float:left;margin:0px;padding:3px 4px;width:143px;}
+#header #searchFriends .searchSubmit {float:left;width:21px;}
+#header #searchFriends .searchSubmit a {background:#6d84b4 url(../images/search_input_gloss.gif) top center repeat-x;border:1px solid #315091;display:block;font-size:11px;margin:0px;padding:0px;text-decoration:none;width:19px;}
+#header #searchFriends .searchSubmit a span{background:transparent url(../images/search_glass.gif) no-repeat scroll 0 70%;display:block;margin:0;padding:3px 0;}
+
+#friend-search 						{float:right;padding:3px 11px 3px 4px;width:175px;} 
+.friend-search input 			{float:left;color:#999;font-size: 11px;border: 1px solid #BDC7D8;font-size:11px;padding:3px;}
+
+**/
+
+/**************************************************************************************************************/
+/********************** STATUS AND WARNING MESSAGES DELIVERED TO USERS AT THE TOP *****************************/
+/**************************************************************************************************************/
+/** NEEDS
+ * actually implement these in code
+ * more generic classes that cover positioning, cause this is redundant
+**/
+.undo {z-index:100;display:none;position: absolute; left:250px; top:0px; width:300px; background-color:#fffc9c; font-size:12px;font-weight:bold;color:#333;font-family: Tahoma, Verdana, Arial, sans-serif;text-align:center;}
+.warning {z-index:100;display:none;position: absolute; left:0px; top:0px; width:736px; text-align:center;
+	     background-color: #ffebe8;  
+	     border: 1px solid #dd3c10;  
+	     color: #333333;  
+	     padding: 10px;  
+	     font-size: 13px;  
+	     font-weight: bold;}
+
+
+/* nick disabled 12/6 */
+/**************************************************************************************************************/
+/************************************** INTRO *************************************/
+/**************************************************************************************************************/
+#introHeader	{width:760px;position:relative;}
+#introBody		{width:760px;position:relative;background:transparent url(../images/intro/bg-gradient.png) repeat scroll center top;}
+#introBody .introLeft		{float:left;height:220px;width:533px;}
+#introBody .introLeft h1{color:#203360;font-size:20px !important;font-weight:bold !important;line-height:29px;padding:15px 85px 0px 50px;word-spacing:-1px;}
+#introBody .introLeft img{padding:25px;}
+#introBody .introRight	{float:left;width:217px;margin-top:5px;margin-right:8px;}
+#introBody .introCentered {float:left;width:750px;text-align:center;}
+#introBody .introCentered h1{color:#203360;font-size:14px !important;margin:50px 100px 20px;word-spacing:-1px;}
+#introBody .introCentered h3{color:#aaa;font-size:16px !important;font-weight:bold !important;line-height:29px;margin-bottom:80px;padding:0px;word-spacing:-1px;}
+
+#introBody .introGlass {clear:both;width:760px;}
+#introBody .introGlass ul {padding:0px 32px 20px 32px;}
+#introBody .introGlass ul li {float:left;width:139px;list-style-type:none;margin:0px 16px;}
+#introBody .introGlass ul li h2 {margin-top:-15px;text-align:center;color:#333;font-size:14px;font-weight:bold;}
+#introBody .introGlass ul li p {margin-top:5px;text-align:center;color:#777;font-size:11px;font-weight:normal;}
+
+
+/*************** formerly NUX CLASSES - I think ****************/
+/** NEEDS:
+ * why are these names so long and stupid?
+ * more genericisity
+**/
+.suggestion-name-suggestion {float:left;width:290px;padding-top:0px;padding-left:7px;top: 0px;font-size: 20px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight:bold;text-align:left;}
+.suggestion-suggestion {float:left;width:171px;padding-top:5px;top:0px;font-size:11px;font-weight:bold;text-align:right;color:#d49000;}
+.suggestion-suggestion .selected {padding-top:0px;top:0px;}
+.suggestion-actions {color:#333;top:3px;}
+.suggestion-actions a {color:#3b5998;font-size:11px;font-weight:normal;}
+.suggest-selected {}
+
+.suggestion-card {background-color:#ffffff;}
+
+
+
+
+
+/**************************************************************************************************************/
+/********************************************** FRIEND POP UP *************************************************/
+/**************************************************************************************************************/
+#friendPopup {position:relative;width:585px;}
+#friendPopup .leftColumn {float:left;width:100px;margin-right:10px;}
+
+#friendPopup .leftColumn img {float:left;}
+#friendPopup .leftColumn ul {float:left;margin-top:2px;}
+#friendPopup .leftColumn ul li {float:left;list-style-type:none;font-size:11px;border-bottom:1px solid #d8dfea;padding:4px 0px 3px 0px;text-align:center;width:100px;color:#777;}
+#friendPopup .leftColumn ul li .starPadder {padding-left:20px;}
+#friendPopup .leftColumn ul li .sliderPadder {padding-left:4px;}
+#friendPopup .rightColumn {float:left;width:475px;}
+#friendPopup .rightColumn .header {clear:both;width:100%;border-bottom:1px solid #ccc;margin:12px 0px 6px 0px;padding-bottom:1px;}
+#friendPopup .rightColumn h3				{float:left;font-size:13px;font-weight:bold;}
+#friendPopup .rightColumn .header ul {float:right;font-size:11px;font-weight:normal;margin:0px;margin-bottom:-2px;}
+
+#friendPopup .rightColumn p {font-size:11px;color:#888;font-weight:normal;padding:3px 0px;}
+#friendPopup .rightColumn p strong {color:#666;}
+
+.friendHeader {padding:4px 6px;background-color:#edeff4;margin-bottom:6px;width:463px;}
+.friendHeader h1 {float:left;font-size:16px;font-weight:bold;}
+.friendHeader h4 {float:right;text-align:right;font-size:11px;font-weight:normal;padding-top:2px;}
+.friendHeader h4 .tagHolder {float:right;padding:0px 4px;}
+.friendHeader h4 .tagHolder .tagList {float:left;margin-top:-2px;}
+
+
+/**************************************************************************************************************/
+/*************************************** FACEBOOK-LIKE PILL FILTERS *******************************************/
+/**************************************************************************************************************/
+#app .pillFilter{overflow:hidden;font-weight:bold;font-size:11px;line-height:15px;}
+#app .pillFilter p {float:left;font-size:10px;padding:2px 6px 0px 8px;color:#888;font-weight:normal;}
+
+#app .pillFilter_position {padding-top:4px;float:left;}
+#app .pillFilter_filter img {padding-left:3px;}
+#app .pillFilter_small{font-weight:normal;font-size:10px;line-height:12px;}
+#app .pillFilter .pillFilter_filter{float:left;outline:none;padding-right:4px;-khtml-user-select:none;-moz-user-select:none;}
+#app .pillFilter_small .pillFilter_filter{padding-right:2px;}
+#app .pillFilter label{float:left;padding:2px 8px 3px 0px;}
+#app .pillFilter .pillFilter_filter.Tabset_selected{color:#fff;cursor:default;text-decoration:none;}
+#app .pillFilter .pillFilter_filter span{float:left;overflow:hidden;}
+#app .pillFilter .pillFilter_filter .bl{padding:2px 6px 3px;}
+#app .pillFilter_small .pillFilter_filter .bl{padding:2px 6px;}
+#app .pillFilter .pillFilter_filter.Tabset_selected span{background:url(../images/facebook/pill_on_white.gif) left top no-repeat;}
+#app .pillFilter_on_blue .pillFilter_filter.Tabset_selected span{background:url(../images/facebook/pill_on_light_blue.gif) left top no-repeat;}
+#app .pillFilter_on_gray .pillFilter_filter.Tabset_selected span{background:url(../images/facebook/pill_on_light_gray.gif) left top no-repeat;}
+#app .pillFilter .pillFilter_filter.Tabset_selected .tl{background-position:left top;}
+#app .pillFilter .pillFilter_filter.Tabset_selected .tr{background-position:right top;}
+#app .pillFilter .pillFilter_filter.Tabset_selected .br{background-position:right bottom;}
+#app .pillFilter .pillFilter_filter.Tabset_selected .bl{background-position:left bottom;}
+#app .pillFilter .pillFilter_filter .setting_icon{background:url(../images/facebook/feed_settings.gif) no-repeat left top;padding-left:12px;}
+#app .pillFilter .pillFilter_filter.Tabset_selected .setting_icon{background:url(../images/facebook/feed_settings.gif) no-repeat left bottom;}
+
+
+
+/**************************************************************************************************************/
+/******************************************* FACEBOOK-LIKE TABS ***********************************************/
+/**************************************************************************************************************/
+.newsfeed_header{padding-bottom:0px;border-bottom:1px solid #D3DAE8;}
+#newsfeed_tabs_wrapper{margin:0px 0px -1px;padding:0px 6px 0px 0px;float:left;}
+#newsfeed_submenu{background-color:#fff;color:#555;overflow:hidden;}
+#newsfeed_more_flyout{margin-left:-5px;}
+
+#app .HomeTabs{display:inline;overflow:hidden;float:left;}
+#app .HomeTabs .HomeTabs_tab{background-color:#d8dfea;display:block;float:left;font-size:11px;font-weight:bold;color:#3b5998;height:23px;position:relative;margin:2px 2px 0px;}
+#app .HomeTabs ul li {-khtml-user-select:none;-moz-user-select:none;}
+#app .HomeTabs ul li.HomeTabs_tab:hover{background-color:#3b5998;color:#fff;text-decoration:none;cursor:pointer;display:block;}
+#app .HomeTabs ul li.HomeTabs_tab:hover a{color:#fff;text-decoration:none;cursor:pointer;display:block;}
+#app .HomeTabs ul li a {padding:5px 5px 5px;margin:0px;display:block;text-decoration:none;}
+
+#app .HomeTabs .Tabset_selected,
+/*.HomeTabs ul li.Tabset_selected:hover{background-color:#fff;font-weight:bold;font-size:12px;color:#000;border:1px solid #d8dfea;border-bottom:1px solid #fff;margin-top:1px;margin-right:1px;margin-left:1px;padding:4px 4px 2px;height:17px;}*/
+#app .HomeTabs ul li.Tabset_selected:hover{background-color:#f8faff;font-weight:bold;font-size:12px;color:#000;border:1px solid #d8dfea;border-bottom:1px solid #f8faff;margin:0px 1px 0px;padding:0px 2px 2px;height:22px;}
+#app .HomeTabs ul li.Tabset_selected:hover a{color:#3b5998;}
+
+.dataTypeSectionList {}  /* container for content in dataTypeView */
+
+
+/**************************************************************************************************************/
+/**************************************** NEW QUICK INPUT: COMPOSER *******************************************/
+/**************************************************************************************************************/
+#quickInput			{height:17px;width:390px;font-size:13px;overflow:hidden;resize:none;padding:3px;margin:0px;}
+
+.composer {clear:both;padding:4px 0 0;}
+.composer .canvas_container{}
+.composer .composer_rounded{background:url('../images/facebook/composer_well.gif') no-repeat top left;}
+.composer .composer_rounded_tr{background-position:top right;}
+.composer .composer_rounded_bl{background-position:bottom left;}
+.composer .composer_rounded_br{background-position:bottom right;}
+.composer .post_button{padding-right:10px;padding-left:10px;}
+.composer .disabled input.inputtext,
+.composer .disabled .status_field,
+.composer .disabled textarea{background:#ddd;}
+.composer .canvas_container .attachment_comment{margin:0px 0px 0px 2px;padding:0px 8px 2px 0px;width:420px;}
+.composer .canvas_container .attachment_comment textarea{border:1px solid #A2A2A2;height:25px;margin:0px;padding:3px;width:100%;overflow:hidden;}
+
+.composer .composer_tabs ul{list-style:none;font-weight:bold;margin:0px;padding:0px 0px 3px 0px;height:auto;font-size:11px;}
+.composer .composer_tabs ul li{float:left;display:block;margin-right:1px;cursor:pointer;-khtml-user-select:none;-moz-user-select:none;}
+.composer .composer_tabs ul li.hidden_elem{display:none;}
+.composer .composer_tabs ul li.selected .composer_tab_arrow{background:transparent url('../images/facebook/composer_tab_selected_arrow.gif') no-repeat bottom center;display:block;}
+.composer .composer_tabs ul li.selected .composer_tab_rounded{background:transparent url('../images/facebook/composer_tab_selected.gif') left top no-repeat;}
+.composer .composer_tabs ul li.selected .composer_tab_rounded_tr{background-position:top right;}
+.composer .composer_tabs ul li.selected .composer_tab_rounded_bl{background-position:bottom left;}
+.composer .composer_tabs ul li.selected .composer_tab_rounded_br{background-position:bottom right;}
+.composer .composer_tabs ul li .tab_link{background-position:left 4px;background-repeat:no-repeat;display:block;margin-left:5px;padding:6px 6px 12px 0px;color:#666;}
+.composer .composer_tabs ul li.selected a{color:#565656;}
+.composer .composer_tabs ul li.selected a:hover{text-decoration:none;}
+.composer .composer_tabs ul li.options {margin:6px 0px 0px 12px;display:block;color:#999;font-size:11px;font-weight:bold;}
+.composer .composer_tabs ul li.icons {margin:0px 6px;padding-top:6px;display:block;color:#3b5998;}
+.composer .composer_tabs ul li.more {margin:0px;display:block;}
+
+.composerIcon {float:left;margin: -2px 4px 0px 0px;width:16px;} /* special icon for composer tabs */
+
+.composer_tabs a.more_composers{background:url(../images/facebook/white_dropdown_closed.gif) no-repeat scroll center 7px;display:block;margin:4px;height:18px;width:17px;position:relative;cursor:pointer;}
+#facebook .composer_tabs ul li a.more_composers:hover,
+#facebook #compose_more_container.selected{background:#6076A5 url(../images/facebook/white_dropdown_open.gif) no-repeat scroll center 7px;text-decoration:none;}
+
+.composer td{padding:0;}
+.composer .status_button{padding:3px 0px 3px;}
+.composer #feedcrawl_profile_composer .post_button{display:none;}
+
+.status_composer{overflow:hidden;padding:6px 8px 5px 7px;}
+.status_composer td{padding:0;}
+.status_composer td.show_placeholder{width:100%;}
+.status_composer table,
+.status_composer table td.statustext{width:100%;}
+.status_composer table tr,
+.status_composer table td{vertical-align:middle;}
+.status_composer .status_field{border:1px solid #BDC7D8;background:white;padding:0;height:19px;}
+.status_composer .status_name{border-right:none;padding:3px 4px 1px 6px;white-space:nowrap;}
+.ie6 .status_composer .status_name{padding:4px 4px 2px 6px;}
+.status_composer .status_box{border-left:none;margin-right:6px;padding:2px 0;}
+.status_composer .status_placeholder{margin-right:6px;padding:2px 0;}
+.status_composer .input_wrapper{padding:0px;margin:1px 0;overflow:hidden;} /* padding used to be 0 6px 0 0 */
+.status_composer .status_field input,
+.status_composer .status_field span{font-size:15px;padding:0;}
+.status_composer .status_name span{color:#777;white-space:nowrap;}
+.status_composer .status_placeholder input{padding-left:4px;}
+.status_composer .status_field input{width:100%;margin:0 2px 0 0;border:none;}
+.ie6 .status_composer .status_button{float:right;}
+.status_composer .feedback{padding:2px 0px 0px 0px;color:#666;font-size:11px;font-weight:normal;}
+textarea {border:1px solid #BDC7D8;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:11px;padding:3px;}
+
+.commentable_item .comment_box {background:transparent url(../images/facebook/box_bg.gif) no-repeat scroll left 1px;clear:both;font-size:11px;overflow:hidden;padding:7px 0 0;}
+.inputbutton, .inputsubmit {background-color:#3B5998;border-color:#D9DFEA #0E1F5B #0E1F5B #D9DFEA;border-style:solid;border-width:1px;color:#FFFFFF;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:11px;padding:2px 15px 3px;text-align:center;}
+.wallpost textarea {height:29px;margin:0;overflow:auto;width:340px;}
+.wallcommentbox {float:left;margin-bottom:4px;margin-left:0;position:relative;}
+.wallcontent {float:left;padding:0 0 0 2px;width:311px;}
+.comments_add_box {background:transparent none repeat scroll 0 0;border:0 none;margin-bottom:0;padding:0;}
+.selected_target_comments {display:block;}
+
+.tip {float:left;width:480px;margin:8px 0px 5px 0px;}
+.tip img {float:left;margin-right:2px;width:16px;} /* not used  too cluttery **/
+.tip p {float:left;font-size:11px;color:#444;padding:0px;margin-left:20px; width:405px;}
+.tip a {float:left;font-size:9px;padding-top:5px;text-decoration:none;width:40px;}
+
+.composerFeedbackIcon						{float:left;width:16px;margin:5px 5px 0px 0px;}
+.composerFeedbackDescription		{width:210px;float:left;font-size:11px;font-weight:normal;padding:3px;}
+.composerFeedbackExamples				{width:200px;float:left;padding:3px;}
+.composerFeedbackExamples h1		{border-bottom:1px solid #ccc;font-weight:bold;font-size:11px;margin-bottom:2px;}
+.composerFeedbackExamples ul		{list-style-type:none;}
+.composerFeedbackExamples ul li	{list-style-type:none;}
+
+/**************************************************************************************************************/
+/************************************** FACEBOOK-STYLE FLOATING EDIT BOX **************************************/
+/**************************************************************************************************************/
+/******************************************* looks like:    options / *****************************************/
+/**************************************************************************************************************/
+/*****************************currently used only in friend feed data to edit / delete ************************/
+/**************************************************************************************************************/
+/** NEEDS:
+ * get php/html for hanging from both sides
+ * implement per-friend options by clicking on profile pic
+**/
+
+/*.flyout_menu{font-size:11px;line-height:normal;position:absolute;margin-top:-5px;margin-left:-5px;left:0px;padding:0px;overflow:visible;width:196px;z-index:40;} major fixes Nick 11/19 */
+.flyout_menu{-khtml-user-select:none;-moz-user-select:none;line-height:normal;position:absolute;margin-top:-5px;margin-left:-5px;padding:0px;overflow:visible;width:196px;z-index:40;right:0px;}
+.flyout_menu .flyout_menu_header_shadow{margin:0px;padding:0px;margin-top:1px;overflow:visible;position:relative;}
+.flyout_menu .flyout_menu_header{position:relative;margin:0px;padding:0px;margin-top:-1px;border:1px solid #333;}
+.flyout_menu .flyout_menu_header .flyout_menu_mask{width:27px;height:24px;border:4px solid white;border-right:0px;margin:0px;float:left;padding:0px;}
+.flyout_menu .flyout_menu_header .flyout_menu_title{font-size:11px;padding:8px 5px 4px 8px;height:18px;color:#666;text-align:left;width:150px;background-color:white;} /* float:left; removed for ie fix N 12/20*/
+.flyout_menu .flyout_menu_content_shadow{background:#eee;border:1px solid #333;border-top:0;clear:left;margin:0px;padding:0px;position:relative;margin-top:-1px;} /* float:right; removed */
+.flyout_menu .menu_content{width:163px;padding:3px 0px 2px;border-top:1px solid #ccc;margin:0px;clear:both;}
+.flyout_menu .menu_custom{overflow:hidden;padding:5px 8px;}
+.flyout_menu .menu_content .item{clear:both;overflow:hidden;padding:3px 0;}
+.flyout_menu .menu_content label{float:left;font-weight:normal;padding-top:1px;}
+.flyout_menu .menu_content .inputcheckbox{float:left;margin:0 4px 0 0;}
+.flyout_menu .menu_separator{background:#ccc;clear:both;font-size:0;height:1px;line-height:1px;margin:3px 6px;overflow:hidden;padding:0;}
+.link_menu_list .menu_content ul{margin:0px;padding:0px;}
+.link_menu_list .menu_content ul li{list-style-type:none;padding:0px;margin:0px;}
+.link_menu .menu_content a,
+.link_menu_list .menu_content ul li a.tab_link{height:auto;width:auto;display:block;overflow:hidden;margin:0px;overflow:hidden;padding:5px 8px 5px 8px;}
+.link_menu .menu_content a.icon_link{background-position:9px 7px;background-repeat:no-repeat;padding-left:26px;}
+.link_menu .menu_content a:hover,
+.link_menu_list .menu_content ul li a.tab_link:hover{text-decoration:none;background-color:#899bc1;color:white;}
+.flyout_menu_left .flyout_menu_content_shadow{float:left;}
+.flyout_menu_left .menu_content{margin:0px;}
+.flyout_menu_left .flyout_menu_header .flyout_menu_mask{float:right;}
+.flyout_menu_18{margin-top:-4px;margin-right:-4px;width:173px;}
+#app .menu_content a:hover {color:#fff;}
+.flyout_menu_18 .flyout_menu_header .flyout_menu_title{padding:5px 8px 3px 5px;height:16px;width:134px;}
+.flyout_menu_left .flyout_menu_header .flyout_menu_title{padding-left:8px;padding-right:5px;}
+.flyout_menu_18 .flyout_menu_header .flyout_menu_mask{width:18px;height:18px;border:3px solid white;}
+.flyout_menu_18 .menu_content{width:150px;}
+.dropdown_menu{position:absolute;right:0px;width:150px;z-index:10;margin-top:-1px;}
+.dropdown_menu .menu_content{border:solid 1px #6076A5;background:white;position:relative;} /* another relative for IE */
+.dropdown_menu a{display:block;padding:3px 10px;}
+.dropdown_menu span.optgroup{color:#808080;cursor:default;display:block;padding:8px 10px 4px 10px;}
+.dropdown_menu a:hover{background:#5C75AA;color:white;text-decoration:none;}
+.dropdown_head .dropdown_link{padding:2px 5px;font-weight:normal;}
+.dropdown_head .dropdown_link:hover{text-decoration:none;}
+.dropdown_head .dropdown_link.selected{background:#5c75aa;color:#fff;border-top:1px solid #3b5998;border-left:1px solid #3b5998;border-right:1px solid #3b5998;}
+.dropdown_head .dropdown_link.selected span{background-position:-13px 0px;}
+.dropdown_head .dropdown_arrow{margin:0;padding-left:3px;background:transparent url(../images/down_arrow.gif) top left no-repeat;width:12px;cursor:pointer;height:15px;}
+.fb_menu_dropdown .fb_menu_separator{margin:6px 4px 5px 4px;border-bottom:1px solid #e0e0e0;}
+
+
+
+/*
+N 1/29 don't believe we use these anymore
+.story_options{position:absolute;right:0px;top:0px;z-index:2;}
+.story_options .story_editor_menu{background:#edf0f7 url(../images/story_editor_icon.gif) no-repeat 97px -18px;position:absolute;top:0;right:19px;width:100px;}
+.story_options .story_editor{position:relative;height:15px;font-size:9px;overflow:hidden;padding:3px 23px 0 0;background:url(../images/story_editor_icon.gif) no-repeat right top;}
+.story_options.selected .story_editor,
+.story_options:hover .story_editor,
+.story_options .story_editor:hover{background-position:right bottom;}
+.story_options.selected .story_editor{padding-right:0;text-indent:-1000px;width:18px;}
+.story_options .story_editor_menu strong,
+.story_options a{display:block;}
+.story_options .story_editor_menu strong,
+.story_options .story_editor_menu a{padding:4px 8px;}
+.story .story_options a{position:relative;visibility:hidden;background-color:white;padding-left:5px;}
+.story_ff .story_options a{background-color:transparent;}
+.story_options.selected a,
+.story.hover .story_options a{visibility:visible;}
+.story_hide{background:transparent url(../images/x_to_hide.gif) no-repeat scroll center;}
+a.story_hide:hover,
+a.story_hide.hover{background:#3b5998 url(../images/x_to_hide_hover.gif) no-repeat scroll center;}
+.story_options .story_featured{background:transparent url(../images/story_option_featured.gif) no-repeat 0px center;}
+.story_options .story_featured:hover{background:#3b5998 url(../images/story_option_featured_hover.gif) no-repeat 0px center;}
+*/
+
+
+/**************************************************************************************************************/
+/****************************************** FACEBOOK-STYLE ICONS **********************************************/
+/**************************************************************************************************************/
+
+.link_menu .menu_content a, .link_menu_list .menu_content ul li a.tab_link {display:block;height:auto;margin:0;overflow:hidden;padding:5px 8px;width:auto;}
+.datatype {width:450px;left:60px;}
+.sx_icons {-khtml-user-select:none;-moz-user-select:none;background:transparent url(../images/icons.png) no-repeat scroll 0 0;height:16px;width:16px;}
+/*.sx_icons.sx_addfriend {background-position:0 -773px;height:16px;}
+.sx_icons.sx_accessibility{}
+.sx_icons.sx_ad{height:15px;background-position:0px -16px;}
+.sx_icons.sx_add_photo{background-position:0px -31px;}
+.sx_icons.sx_ads_and_pages{background-position:0px -47px;}
+.sx_icons.sx_affiliation{height:14px;background-position:0px -63px;}
+.sx_icons.sx_alert{background-position:0px -77px;}
+.sx_icons.sx_alert_bw{background-position:0px -93px;}
+.sx_icons.sx_analytics{background-position:0px -109px;}
+.sx_icons.sx_answers{width:15px;background-position:0px -125px;}
+.sx_icons.sx_audioplayer{height:15px;background-position:0px -141px;}
+.sx_icons.sx_beacon{background-position:0px -156px;}
+.sx_icons.sx_block{background-position:0px -172px;}
+.sx_icons.sx_blog{height:15px;background-position:0px -188px;}
+.sx_icons.sx_blogmini{width:14px;height:14px;background-position:0px -203px;}
+.sx_icons.sx_bookmark{background-position:0px -217px;}
+.sx_icons.sx_bookreview{background-position:0px -233px;}
+.sx_icons.sx_button_gradient{width:6px;height:30px;background-position:0px -249px;}
+.sx_icons.sx_calendar{background-position:0px -279px;}
+.sx_icons.sx_camera{background-position:0px -295px;}
+.sx_icons.sx_canada_flag{background-position:0px -311px;}
+.sx_icons.sx_check_mark{width:13px;height:13px;background-position:0px -327px;}
+.sx_icons.sx_comment{height:15px;background-position:0px -340px;}
+.sx_icons.sx_comment_with_text{height:68px;background-position:0px -355px;}
+.sx_icons.sx_connect{background-position:0px -423px;}
+.sx_icons.sx_demote_x2_hover{width:15px;background-position:0px -439px;}
+.sx_icons.sx_demote_x2_off{width:15px;background-position:0px -455px;}
+.sx_icons.sx_demote_x2_on{width:15px;background-position:0px -471px;}
+.sx_icons.sx_dev_app{width:18px;height:18px;background-position:0px -487px;}
+.sx_icons.sx_developer{background-position:0px -505px;}
+.sx_icons.sx_discussion{height:18px;background-position:0px -521px;}
+.sx_icons.sx_edit_profile{background-position:0px -539px;}
+.sx_icons.sx_election{height:13px;background-position:0px -555px;}
+.sx_icons.sx_email_application{width:18px;background-position:0px -568px;}
+.sx_icons.sx_email_web{width:17px;height:17px;background-position:0px -584px;}
+.sx_icons.sx_external_link{width:12px;height:12px;background-position:0px -618px;}
+.sx_icons.sx_favicon{background-position:0px -630px;}
+.sx_icons.sx_fbfile{width:14px;background-position:0px -646px;}
+.sx_icons.sx_fbml{background-position:0px -662px;}
+.sx_icons.sx_fbpage{background-position:0px -678px;}
+.sx_icons.sx_fbpage_add{background-position:0px -694px;}
+.sx_icons.sx_feed{width:15px;height:15px;background-position:0px -710px;}
+.sx_icons.sx_feed_comments{background-position:0px -725px;}
+.sx_icons.sx_flash{background-position:0px -757px;}
+.sx_icons.sx_friend{background-position:0px -773px;}
+.sx_icons.sx_friend_finder{background-position:0px -789px;}
+.sx_icons.sx_friend_gal{background-position:0px -805px;}
+.sx_icons.sx_friend_gal_pink{background-position:0px -821px;}
+.sx_icons.sx_friend_guy{height:17px;background-position:0px -837px;}
+.sx_icons.sx_friend_list_icon{width:19px;height:23px;background-position:0px -854px;}
+.sx_icons.sx_friend_list_icon_with_hover{width:32px;background-position:0px -877px;}
+.sx_icons.sx_friend_list_make{width:17px;background-position:0px -893px;}
+.sx_icons.sx_friend_list_plus{width:19px;height:10px;background-position:0px -909px;}
+.sx_icons.sx_friend_list_plus_blue{width:19px;height:10px;background-position:0px -919px;}
+.sx_icons.sx_friend_mob{height:17px;background-position:0px -929px;}
+.sx_icons.sx_friend_suggestion{background-position:0px -946px;}
+.sx_icons.sx_gift{height:15px;background-position:0px -962px;}
+.sx_icons.sx_group{height:14px;background-position:0px -977px;}
+.sx_icons.sx_hidden{background-position:0px -991px;}
+.sx_icons.sx_hourglass{background-position:0px -1007px;}
+.sx_icons.sx_im{width:17px;height:15px;background-position:0px -1023px;}
+.sx_icons.sx_install_app{width:17px;height:14px;background-position:0px -1038px;}
+.sx_icons.sx_interest{background-position:0px -1052px;}
+.sx_icons.sx_invite{background-position:0px -1068px;}
+.sx_icons.sx_lexicon{background-position:0px -1084px;}
+.sx_icons.sx_link{height:15px;background-position:0px -1100px;}*/
+.sx_icons.sx_magnifying_glass{background-position:0px -1115px;}
+/*.sx_icons.sx_marketplace{background-position:0px -1131px;}
+.sx_icons.sx_message{height:12px;background-position:0px -1147px;}
+.sx_icons.sx_mobile{height:18px;background-position:0px -1159px;}
+.sx_icons.sx_mobile_app{background-position:0px -1177px;}
+.sx_icons.sx_mobile_note{width:14px;background-position:0px -1193px;}
+.sx_icons.sx_mobile_photo{height:19px;background-position:0px -1209px;}
+.sx_icons.sx_motion{background-position:0px -1228px;}
+.sx_icons.sx_music{height:15px;background-position:0px -1244px;}
+.sx_icons.sx_new_feature{background-position:0px -1259px;}
+.sx_icons.sx_news{background-position:0px -1275px;}
+.sx_icons.sx_notifications{background-position:0px -1308px;}
+.sx_icons.sx_people_directory{width:13px;height:15px;background-position:0px -1324px;}
+.sx_icons.sx_photo{background-position:0px -1339px;}
+.sx_icons.sx_photos_notes{height:17px;background-position:0px -1355px;}
+.sx_icons.sx_poke{height:14px;background-position:0px -1372px;}
+.sx_icons.sx_polls{background-position:0px -1386px;}
+.sx_icons.sx_post{height:15px;background-position:0px -1402px;}
+.sx_icons.sx_privacy{background-position:0px -1417px;}
+.sx_icons.sx_privacy_lock{background-position:0px -1433px;}
+.sx_icons.sx_promote_t2_hover{width:18px;background-position:0px -1449px;}
+.sx_icons.sx_promote_t2_off{width:18px;background-position:0px -1465px;}
+.sx_icons.sx_promote_t2_on{width:18px;background-position:0px -1481px;}
+.sx_icons.sx_props{background-position:0px -1497px;}
+.sx_icons.sx_relationship_remove{height:17px;background-position:0px -1529px;}
+.sx_icons.sx_request_button_icon{width:15px;height:10px;background-position:0px -1546px;}
+.sx_icons.sx_reviews{background-position:0px -1572px;}
+.sx_icons.sx_reviews{background-position:0px -1588px;}
+.sx_icons.sx_security{background-position:0px -1604px;}
+.sx_icons.sx_see_more{width:5px;height:9px;background-position:0px -1620px;}
+.sx_icons.sx_see_more_down{width:9px;height:5px;background-position:0px -1629px;}
+.sx_icons.sx_settings{background-position:0px -1634px;}
+.sx_icons.sx_share{width:14px;height:14px;background-position:0px -1650px;}
+.sx_icons.sx_share_button_large{background-position:0px -1664px;}
+.sx_icons.sx_share_button_small{width:12px;height:12px;background-position:0px -1680px;}
+.sx_icons.sx_share_plus{width:14px;height:14px;background-position:0px -1692px;}
+.sx_icons.sx_short_note{background-position:0px -1706px;}
+.sx_icons.sx_social_ad{background-position:0px -1722px;}
+.sx_icons.sx_sort{width:11px;height:13px;background-position:0px -1738px;}
+.sx_icons.sx_sort_dark{width:11px;height:3px;background-position:0px -1751px;}
+.sx_icons.sx_start_quote{width:18px;height:12px;background-position:0px -1754px;}
+.sx_icons.sx_start_quote_small{width:14px;height:10px;background-position:0px -1766px;}
+.sx_icons.sx_thumbs_dn_gray{width:18px;background-position:0px -1776px;}
+.sx_icons.sx_thumbs_dn_gray_hover{width:18px;background-position:0px -1792px;}
+.sx_icons.sx_thumbs_up_gray{width:18px;background-position:0px -1808px;}
+.sx_icons.sx_transfer{height:14px;background-position:0px -1824px;}
+.sx_icons.sx_translations{background-position:0px -1838px;}
+.sx_icons.sx_video{height:17px;background-position:0px -1870px;}
+.sx_icons.sx_wall_post{background-position:0px -1887px;}*/
+
+/*.sx_icons.sx_flag{background-position:0px -741px;} */
+/*.sx_icons.sx_note{height:17px;background-position:0px -1291px;}*/
+/*.sx_icons.sx_requests{background-position:0px -1556px;}*/  /* was total friends tracked */
+/*.sx_icons.sx_updates{background-position:0px -1854px;}*/ /* was the suggestion icon */
+
+/*these are temporary icons added for the item list - we'll refactor / clean this up soon */
+/*list used to be: 					{background-position:-16px -876px;} */
+/*.sx_icons.sx_favor					{background-position:0px -946px;}*/
+
+.sx_icons.sx_notes 					{background-position:0 -1706px;height:17px;}
+
+
+
+/* NICK's REFACTORED ICONS GALORE */
+.sx_icons.sx_flag						{background-position:0px -1903px;}
+.sx_icons.sx_owein					{background-position:0px -1919px;}		/* should be called moneyin, but we'll do that later (nick 12/15) */
+.sx_icons.sx_owein_selected	{background-position:-16px -1919px;}		/* should be called moneyin, but we'll do that later (nick 12/15) */
+.sx_icons.sx_oweout					{background-position:0px -1935px;}		/* should be called moneyout, but we'll do that later (nick 12/15) */
+.sx_icons.sx_oweout_selected{background-position:-16px -1935px;}		/* should be called moneyout, but we'll do that later (nick 12/15) */
+.sx_icons.sx_money					{background-position:0px -1951px;}
+.sx_icons.sx_done						{background-position:0px -1967px;}
+.sx_icons.sx_done_hover			{background-position:-16px -1967px;}
+.sx_icons.sx_snooze					{background-position:0px -1983px;}
+.sx_icons.sx_snooze_hover		{background-position:-16px -1983px;}
+.sx_icons.sx_checked				{background-position:-16px -1999px;}
+.sx_icons.sx_unchecked			{background-position:0px -1999px;}
+.sx_icons.sx_personed 			{background-position:-16px -2015px;}
+.sx_icons.sx_unpersoned 		{background-position:0px -2015px;}
+.sx_icons.sx_plan						{background-position:0px -2031px;}
+.sx_icons.sx_talked					{background-position:-16px -2031px;}
+.sx_icons.sx_meet						{background-position:-16px -2047px;}
+.sx_icons.sx_rPlan					{background-position:0px -2047px;}
+.sx_icons.sx_rPlan_selected	{background-position:-16px -2047px;}
+.sx_icons.sx_favorbu				{background-position:0px -2079px;}
+.sx_icons.sx_favorbu_selected	{background-position:-16px -2079px;}
+.sx_icons.sx_favorbf				{background-position:0px -2063px;}
+.sx_icons.sx_favorbf_selected{background-position:-16px -2063px;}
+.sx_icons.sx_favor					{background-position:0px -2095px;} /* the general favor icon, going both ways */
+.sx_icons.sx_favor_selected	{background-position:-16px -2095px;} /* the general favor icon, going both ways */
+.sx_icons.sx_like  				  {background-position:0px -2111px;}
+.sx_icons.sx_like_selected  {background-position:-16px -2111px;}
+.sx_icons.sx_dislike  		  {background-position:0px -2127px;}
+.sx_icons.sx_dislike_selected {background-position:-16px -2127px;}
+.sx_icons.sx_preferences	  {background-position:0px -2143px;}
+.sx_icons.sx_preferences_selected	  {background-position:-16px -2143px;}
+.sx_icons.sx_note						{background-position:0px -2159px;}
+.sx_icons.sx_note_selected	{background-position:-16px -2159px;}
+.sx_icons.sx_tag	 					{background-position:0px -2175px;}				  
+.sx_icons.sx_tag_selected		{background-position:-16px -2175px;}				  
+.sx_icons.sx_need						{background-position:0px -2191px;}
+.sx_icons.sx_want   				{background-position:0px -2191px;} /* same as need; consider alternative icon or put in space below */
+.sx_icons.sx_need_selected	{background-position:-16px -2191px;}
+.sx_icons.sx_have						{background-position:0px -2207px;}
+.sx_icons.sx_have_selected	{background-position:-16px -2207px;}
+/* space in file for BOTH need/have */
+.sx_icons.sx_birthday				{height:15px;background-position:0px -2239px;}
+.sx_icons.sx_bday						{height:15px;background-position:0px -2239px;}	/* once again dunno if this is referenced, clean it later (nick 12/15) */
+.sx_icons.sx_birthday_selected{height:15px;background-position:0px -2239px;}
+.sx_icons.sx_map				    {background-position:0px -2255px;}
+.sx_icons.sx_map_selected   {background-position:-16px -2555px;}
+.sx_icons.sx_address				{background-position:0px -2255px;}	/* once again dunno if this is referenced, clean it later (nick 12/15) */
+.sx_icons.sx_network				{background-position:0px -2271px;}
+.sx_icons.sx_network_selected	{background-position:-16px -2271px;}
+.sx_icons.sx_home						{background-position:0px -2303px;}
+.sx_icons.sx_date						{background-position:0px -2319px;}
+.sx_icons.sx_relationship  	{background-position:0px -2335px;}	
+.sx_icons.sx_updates				{background-position:0px -2367px;}
+.sx_icons.sx_event					{height:16px;background-position:0px -2399px;} /* this may be deleted later, or put in a different file, or merged w/ date icons */
+
+.sx_icons.sx_pencil					{background-position:0px -2367px;} /* don't know if we're using N 12/15 */
+
+/* ghettoed at the bottom - will revise */
+/*.sx_icons.sx_bluecheck			{background-position:0px -2527px;}
+.sx_icons.sx_socialfly			{background-position:0px -2543px;}
+.sx_icons.sx_fbfund					{background-position:0px -2560px;}
+.sx_icons.sx_moon						{background-position:0px -2576px;}
+.sx_icons.sx_asterix				{background-position:0px -2592px;}
+.sx_icons.sx_userevent			{background-position:0px -2608px;}
+.sx_icons.sx_history				{background-position:0px -2624px;}
+.sx_icons.sx_suggestion			{background-position:0px -2640px;}
+.sx_icons.sx_tip						{background-position:0px -2656px;}
+*/
+
+.sx_dateicons {-khtml-user-select:none;-moz-user-select:none;background:transparent url(../images/dateicons.png) no-repeat scroll 0 0;height:16px;width:16px;}
+.sx_dateicons.sx_1					{}
+.sx_dateicons.sx_2 					{background-position:0px -16px;}
+.sx_dateicons.sx_3 					{background-position:0px -32px;}
+.sx_dateicons.sx_4 					{background-position:0px -48px;}
+.sx_dateicons.sx_5 					{background-position:0px -64px;}
+.sx_dateicons.sx_6 					{background-position:0px -80px;}
+.sx_dateicons.sx_7 					{background-position:0px -96px;}
+.sx_dateicons.sx_8 					{background-position:0px -112px;}
+.sx_dateicons.sx_9 					{background-position:0px -128px;}
+.sx_dateicons.sx_10 				{background-position:0px -144px;}
+.sx_dateicons.sx_11 				{background-position:0px -160px;}
+.sx_dateicons.sx_12 				{background-position:0px -176px;}
+.sx_dateicons.sx_13 				{background-position:0px -192px;}
+.sx_dateicons.sx_14 				{background-position:0px -208px;}
+.sx_dateicons.sx_15 				{background-position:0px -224px;}
+.sx_dateicons.sx_16 				{background-position:0px -240px;}
+.sx_dateicons.sx_17 				{background-position:0px -256px;}
+.sx_dateicons.sx_18 				{background-position:0px -272px;}
+.sx_dateicons.sx_19 				{background-position:0px -288px;}
+.sx_dateicons.sx_20 				{background-position:0px -304px;}
+.sx_dateicons.sx_21 				{background-position:0px -320px;}
+.sx_dateicons.sx_22 				{background-position:0px -336px;}
+.sx_dateicons.sx_23 				{background-position:0px -352px;}
+.sx_dateicons.sx_24 				{background-position:0px -368px;}
+.sx_dateicons.sx_25 				{background-position:0px -384px;}
+.sx_dateicons.sx_26 				{background-position:0px -400px;}
+.sx_dateicons.sx_27 				{background-position:0px -416px;}
+.sx_dateicons.sx_28 				{background-position:0px -432px;}
+.sx_dateicons.sx_29 				{background-position:0px -448px;}
+.sx_dateicons.sx_30 				{background-position:0px -464px;}
+.sx_dateicons.sx_31 				{background-position:0px -480px;}
+
+/*.sx_dateicons.sx_2_holiday 	{background-position:-16px -16px;}
+.sx_dateicons.sx_3_holiday 	{background-position:-16px -32px;}
+.sx_dateicons.sx_4_holiday 	{background-position:-16px -48px;}
+.sx_dateicons.sx_5_holiday 	{background-position:-16px -64px;}
+.sx_dateicons.sx_6_holiday 	{background-position:-16px -80px;}
+.sx_dateicons.sx_7_holiday 	{background-position:-16px -96px;}
+.sx_dateicons.sx_8_holiday 	{background-position:-16px -112px;}
+.sx_dateicons.sx_9_holiday 	{background-position:-16px -128px;}
+.sx_dateicons.sx_10_holiday {background-position:-16px -144px;}
+.sx_dateicons.sx_11_holiday {background-position:-16px -160px;}
+.sx_dateicons.sx_12_holiday {background-position:-16px -176px;}
+.sx_dateicons.sx_13_holiday {background-position:-16px -192px;}
+.sx_dateicons.sx_14_holiday {background-position:-16px -208px;}
+.sx_dateicons.sx_15_holiday {background-position:-16px -224px;}
+.sx_dateicons.sx_16_holiday {background-position:-16px -240px;}
+.sx_dateicons.sx_17_holiday {background-position:-16px -256px;}
+.sx_dateicons.sx_18_holiday {background-position:-16px -272px;}
+.sx_dateicons.sx_19_holiday {background-position:-16px -288px;}
+.sx_dateicons.sx_20_holiday {background-position:-16px -304px;}
+.sx_dateicons.sx_21_holiday {background-position:-16px -320px;}
+.sx_dateicons.sx_22_holiday {background-position:-16px -336px;}
+.sx_dateicons.sx_23_holiday {background-position:-16px -352px;}
+.sx_dateicons.sx_24_holiday {background-position:-16px -368px;}
+.sx_dateicons.sx_25_holiday {background-position:-16px -384px;}
+.sx_dateicons.sx_26_holiday {background-position:-16px -400px;}
+.sx_dateicons.sx_27_holiday {background-position:-16px -416px;}
+.sx_dateicons.sx_28_holiday {background-position:-16px -432px;}
+.sx_dateicons.sx_29_holiday {background-position:-16px -448px;}
+.sx_dateicons.sx_30_holiday {background-position:-16px -464px;}
+.sx_dateicons.sx_31_holiday {background-position:-16px -480px;}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************** RIGHT GREY BOX CLASSES ******************/
+#status-progressbar{}
+#status-notifications_sliders{margin-bottom:50px}
+#status-recent{}
+#status-suggestions{}
+#status-enable-demigo{}
+#status-upcoming-events{}
+#status-upcoming-birthdays{}
+#status-upcoming-dates{}
+#status-life-plans{}
+#status-life-friends{}
+#status-life-fbfriends{}
+
+	
+/************ FACEBOOK STUFF */
+
+.friend_grid_col{margin:5px 0 5px 10px;float:left;width:200px;overflow:hidden;}
+.friend_grid_col .fic_img{float:left;width:50px;margin:0;padding:0;}
+.friend_grid_col .fic_img img{width:50px;height:50px;display:block;}
+.friend_grid_col .fic_links{padding:0;width:128px;overflow:hidden;float:left;padding:1px 0px 0px 8px;}
+.friend_grid_col .fic_links .fic_name{font-size:11px;font-weight:bold;color:#333;padding-bottom:8px;}
+.friend_grid_col .fic_links .fic_action_view{display:none;}
+.friend_grid_col .fic_links .fic_action_add .inactive{color:#666;}
+.friend_grid_col .fic_action_hide{float:right;width:12px;height:11px;margin:3px 2px 0 0;}
+.no_x .fg_action_hide{visibility:hidden;}
+.friend_grid_col .fic_action_hide h5{display:block;margin:0;padding:0;}
+.friend_grid_col .fic_action_hide h5 a{height:12px;width:11px;display:block;text-indent:-5000px;background:url(../images/spr_pymk_x_fff.gif) top left no-repeat;margin:0;padding:0;}
+.friend_grid_col .fic_action_hide h5 a:hover{display:block;background:url(../images/spr_pymk_x_fff.gif) -11px 0px no-repeat;}
+
+.UITwoColumnLayout_Container{margin:0px;overflow:hidden;}
+.UITwoColumnLayout_Content{float:left;margin:0px;padding:0px;width:540px;}
+.UITwoColumnLayout_NarrowContent{float:left;width:217px;}
+
+.UIRoundedBox_Container{margin:0px;padding:0px;}
+.UIRoundedBox_BottomMargin{padding-bottom:10px;}
+.UIRoundedBox_Box{margin:0px;padding:0px;}
+.UIRoundedBox_Container .UIRoundedBox_Side{background:url(../images/ui/UIRoundedBox_SideSpriteGray.gif) 0 0 repeat-y;}
+.UIRoundedBox_WhiteBackground .UIRoundedBox_Side{background:url(../images/ui/UIRoundedBox_SideSpriteWhite.gif) 0 0 repeat-y;}
+.UIRoundedBox_Container .UIRoundedBox_LS{background-position:left top;}
+.UIRoundedBox_Container .UIRoundedBox_RS{background-position:right top;}
+.UIRoundedBox_Container .UIRoundedBox_Corner{background:url(../images/ui/UIRoundedBox_SpriteGray.gif) 0 0 no-repeat;}
+.UIRoundedBox_WhiteBackground .UIRoundedBox_Corner{background:url(../images/ui/UIRoundedBox_SpriteWhite.gif) 0 0 repeat-y;}
+.UIRoundedBox_Container .UIRoundedBox_TL{padding:0;background-position:left top;}
+.UIRoundedBox_Container .UIRoundedBox_TR{padding:5px 0 0 0;background-position:right top;}
+.UIRoundedBox_Container .UIRoundedBox_BL{padding:0;background-position:left bottom;}
+.UIRoundedBox_Container .UIRoundedBox_BR{padding:0 0 5px 0;background-position:right bottom;}
+.UIInterstitialBox_Container{padding:25px 30px;}
+
+.sidebar_item{padding:0px 1px;}
+.comingsoon {color:#888;}
+.sidebar_item_header{border-top:solid #e9e9e9 1px;clear:left;margin:4px 0px;padding:8px 9px 2px;text-align:right;}
+.sidebar_item.first .sidebar_item_header{border:none;padding-top:0px;}
+.sidebar_item_header h2{-khtml-user-select:none;-moz-user-select:none;float:left;font-size:11px;color:#333;}
+.sidebar_item_body{padding:0px 9px 5px;}
+.sidebar_item_body input {float:left;border: 1px solid rgb(189, 199, 216); padding: 3px; width: 130px; color: rgb(153, 153, 153); font-size: 11px;} /* search box */
+.sidebar_item_secondaryheader {padding:6px 0 5px 9px; border-bottom: 1px solid #DDD; margin-bottom: 5px;}
+.sidebar_item_secondaryheader a {padding:0;margin:0;font-size:10px;}
+
+/* for data type list - do later after 11/18 Nick
+.dataType 											{padding-top:10px; padding-bottom:5px;border-top:solid #e9e9e9 1px;}
+.sidebar_item ul.dTypeList 			{list-style:none;}
+.sidebar_item ul.dTypeList li		{display:block;float:left;list-style:none;list-style-type:none;margin-bottom:5px;padding-top:2px;width:180px;}
+*/
+.sidebar_item ul.icon_list{margin:0;padding:0;}
+.sidebar_item ul.mission_list{-khtml-user-select:none;-moz-user-select:none;margin:0;padding-left:0px;padding-top:9px;width:180px;}
+.sidebar_item ul.icon_list li{-khtml-user-select:none;-moz-user-select:none;display:block;float:left;list-style:none;margin-bottom:5px;width:180px;}
+.sidebar_item ul.mission_list li{display:block;float:left;list-style:none;margin-bottom:5px;width:180px;}
+.sidebar_item ul.icon_list li a{float:left;padding-top:2px;}
+
+
+.sidebar_item ul.iconList{margin: 0px 0px 0px 0px;padding:0px 0px 5px 0px;}
+.sidebar_item ul.iconList li{-khtml-user-select:none;-moz-user-select:none;display:block;float:left;list-style:none;margin:0px 2px 0px 0px;width:130px;}
+.sidebar_item ul.iconList li a {float:left;padding-top:2px;}
+
+/*#homeLink, #friendListLink, #mapLink, #eventsButton, #notesButton, #plansButton, #dateButton, #likesButton, #favorsButton, #wantsButton, #relationshipButton {padding-bottom:5px;}*/
+
+
+
+.tip_title, .mission_title{-khtml-user-select:none;-moz-user-select:none;text-align:center;font-weight:bold;padding-top:5px; padding-bottom:5px;font-size:14px;color:#333333;border-bottom:solid #e9e9e9 1px;}
+.mission_goal{-khtml-user-select:none;-moz-user-select:none;text-align:left;padding-top:5px; padding-bottom:5px;background-color:#faffd4; border-bottom:solid #e9e9e9 1px;}
+.mission_icon{float:left;width:20px;padding-left:5px;vertical-align:middle;}
+.mission_icon_text{-khtml-user-select:none;-moz-user-select:none;float:left;width:180px;padding-left:5px;font-weight:bold;font-size:12px;color:#333333;}
+.tip_text{-khtml-user-select:none;-moz-user-select:none;padding:5px;text-align:center;font-weight:bold;font-size:12px;background-color:#DDD;color:#333333;}
+
+.mission_type .emptycheck{background:url(../images/icons/emptycheck.gif) no-repeat 0 3px;color:#333333;}
+.mission_type .selectcheck{background:url(../images/icons/selectcheck.gif) no-repeat 0 3px;}
+.mission_type .emptyfriend{background:url(../images/icons/emptyfriend.gif) no-repeat 0 3px;color:#333333;}
+.mission_type .selectfriend{background:url(../images/icons/selectfriend.gif) no-repeat 0 3px;}
+
+.mission_type .unfinished{background:url(../images/icons/unfinished.gif) no-repeat 0 3px;color:#333333;font-weight:bold;}
+.mission_type .finished{color:#777777;}
+.mission_debrief {text-align:center;padding-top:10px; padding-bottom:5px;border-top:solid #e9e9e9 1px;}
+
+.addon_left{-khtml-user-select:none;-moz-user-select:none;float:left;width:58px;padding:3px 0px 8px 8px;text-align:center;}
+.addon_right{-khtml-user-select:none;-moz-user-select:none;float:left;width:135px;padding:3px 5px 5px 5px;}
+.addon{-khtml-user-select:none;-moz-user-select:none;float:left;width:200px;padding-left:10px;padding-bottom:5px;}
+
+
+.chartLeft {-moz-user-select:none;float:left;padding:5px 0 8px 8px;width:50px;text-align:right;font-size:12px;}
+.chartRight {-moz-user-select:none;float:left;padding:3px 5px 0px;width:135px;}
+
+.sidebar_chart {width:217px;}
+.sidebar_chart p {text-align:center;font-size:11px;}
+.sidebar_chart strong {font-size:13px;}
+.sidebarChartNumber 		 {float:left;width:40px;	height:24px;font-size:16px;text-align:center;font-weight:bold;border:1px solid #AAA;padding:0px;margin-right:6px;}
+.sidebarChartDescription {float:left;width:160px;	height:24px;font-size:10px;padding-top:5px;}
+.sidebar_chart ul {list-style:none;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #ccc;}
+.sidebar_chart li {width:217px;clear:both;vertical-align:middle;height:30px;}
+/**************************************************************************************************************/
+/************************************** FOOTING THE BILL - THE FOOTER  ****************************************/
+/**************************************************************************************************************/
+
+/*#pagefooter{background:#f8f8f8 url(../images/pagefooter_border_top.gif) no-repeat top center;margin:0px auto;margin-top:0px;position:relative;width:758px;}*/
+#pagefootersf{display:none;background:#F8F8F8 url(../images/pagefooter_border_top.gif) no-repeat scroll center top;clear:both;float:left;width:758px;margin-top:30px;}
+
+#pagefootersf.pagefooter_minimal{background:transparent;}
+#pagefootersf .pagefooter_topborder{background:transparent url(../images/pagefooter_border_bottom.gif) no-repeat bottom center;padding:1px;}
+#pagefootersf.pagefooter_minimal .pagefooter_topborder{background:transparent;padding:1px 6px;}
+#pagefootersf .copyright_and_location{float:left;width:310px;}
+#pagefootersf .copyright{float:left;color:#777;margin:0px;padding:5px 8px 6px 11px;}
+#pagefootersf .app_copyright{color:#777;padding:0px 8px 0px 11px;}
+#pagefootersf .app_copyright .brand{background-image:url(http://static.ak.fbcdn.net/images/icons/hidden.gif);background-position:center left;background-repeat:no-repeat;padding:5px 10px 6px 22px;}
+#pagefootersf .app_copyright .brand .page_built_by{padding-right:5px;}
+#pagefootersf .app_copyright .footer_report_link{background:transparent url(http://static.ak.fbcdn.net/images/pagefooter_bullet.gif) no-repeat 0% 60%;padding-left:8px;padding-right:4px;}
+#pagefootersf .locale_footer_selector{float:left;padding:5px 5px 0px 0px;}
+#pagefootersf .pagefooter_links{float:right;padding:5px 11px 6px 0px;text-align:right;width:430px;}
+#pagefootersf .pagefooter_links ul{display:inline;margin:0px;padding:0px;text-decoration:none;}
+#pagefootersf .pagefooter_links ul li{display:inline;padding:0px 0px 0px 10px;}
+#pagefootersf .pagefooter_links ul.pagefooter_left_links{background:transparent url(http://static.ak.fbcdn.net/images/pagefooter_bullet.gif) no-repeat 100% 60%;padding:0px 14px 0px 0px;}
+#pagefootersf .pagefooter_links ul.pagefooter_right_links{padding:0;}
+
+.NUX1-Card 							{background-color:#ffe4e1!important;text-decoration:italic;}
+.NUX1-Card-selected			{background-color:#d0e6ff;text-decoration:none;color:#3b5998;}
+.NUX_leftbox						{left:520px;} /* this sets the grey boxes to the left a bit more, to prevent unnecessary scrolling */
+
+.suggestion-name-NUX1 a{color:#973b3e;}
+.suggestion-name-NUX1 					{width:450px;padding-top:6px;top: 0px;font-size: 22px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight:normal;font-style:italic;text-align:center;}
+.suggestion-name-NUX1-selected 	{width:450px;padding-top:6px;top: 0px;font-size: 22px;font-family: Tahoma, Verdana, Arial, sans-serif;font-weight:bold;text-align:center;}
+
+.suggestion-feedtype-NUX2 {display:none;clear:both;position:relative;width:518px;background-image:url(../images/hr.gif);background-repeat:repeat;}
+
+#nux-button input {font-size:20px;font-color:#666;font-weight:bold;}
+
+#nuxheader					{-khtml-user-select:none;-moz-user-select:none;float:left;width:758px;height:90px;background-image:url(../images/nuxheader-bg.gif);}
+ .fly			{-khtml-user-select:none;-moz-user-select:none;float:left;padding:10px;}
+ .box			{float:left;margin:0px;padding:5px;width:570px;font-size:16px;font-weight:normal;font-family: Tahoma, Verdana, Arial, sans-serif;}
+ .button	{float:left;margin:0px;padding-top:24px;width:90px;text-align:center;}
+ .button input	{font-size:16px;font-weight:bold;}
+.sf 			{color:#D49000;}
+.nuxPopOut {position:absolute;bottom:5px;font-size:12px;font-weight:bold;text-align:center;}
+
+.nuxCommentBox		{border:1px solid #fff;font-weight:normal;width:600px;padding:8px 8px 20px 8px;}
+.nuxCommentBox h1 {font-size:16px;font-weight:bold;margin:3px 0px;}
+.nuxCommentBox h2 {font-size:14px;font-weight:bold;margin-bottom:3px;margin-top:15px;clear:left;}
+.nuxCommentBox p  {margin-top:5px;margin-bottom:5px;color:#666;font-size:13px;}
+/*#nuxcontactbody			{clear:both;float:left;width:533px;}
+.UITwoColumnLayout_NarrowContentNUX{position:absolute;left:540px;top:100px;width:217px;height:77px;} smart resize iframe: used to be 543px */
+
+/*********** quick input ORIENTATION (mostly from fb) *********/
+
+
+.qi_firstrun {
+	position:absolute;
+	left:60px;
+	top:60px;
+	font-size:11px;
+	width:300px;
+	height:auto;
+	z-index:90;
+	background-color:#fff;
+	}
+.qi_firstrun .callout {
+	background:#fff8cc url(../images/orientation_callout_vertical_left.png) repeat-x left top;
+	margin:0px 0px;
+	padding:24px 8px 6px 8px;
+	}
+
+/* progress bar container */
+   #progressbar{
+			z-index:2;
+      border:1px solid #949dad;
+      width:250px;
+      height:16px;
+      position:absolute;
+			right:0px;
+			top:5px;
+//      color:black;
+   }
+   /* color bar */
+   #progressbar div.progress{
+      position:absolute;
+      width:0;
+      height:100%;
+      overflow:hidden;
+      background-color:#d4e4ff;
+   }
+   /* text on bar */
+   #progressbar div.progress .text{
+	   	display:none;
+      position:absolute;
+      text-align:center;
+      color:white;
+   }
+   /* text off bar */
+   #progressbar div.text{
+      display:none;
+			position:absolute;
+      width:100%;
+      height:100%;
+      text-align:center;
+   }
+
+	#loaderHolder {position:relative;left:250px;height:32px;width:32px;top:50px;}/**************************************************************************************************************/
+/************************ "dwim", aka the QUICK INPUT SYSTEM **************************************************/
+/**************************************************************************************************************/
+/*************************************** "do what i mean! not what i say!" ************************************/
+/**************************************************************************************************************/
+
+.qi_autoComplete_divider {border-bottom:1px solid #999;padding-bottom:3px;margin-bottom:3px;} /* deprecated 12/8 nick */
+
+.quick-input input 			{font-size: 12px;border: 0px;padding-left:3px;padding-top:3px;height:16px;width:99%;color:#666;} /*IE7: width:100%. disabled border! border: 1px solid #BDC7D8;*/
+.quick-input_edit input {font-size: 10px;border: 1px solid #BDC7D8;height:21px;padding:3px;width:432px;position:relative;left:56px;z-index:10;}
+
+
+/**** CLEANUP ON AISLE 4 ******/
+/* what is this shit I wrote? */
+/**** CLEANUP ON AISLE 4 ******/
+.suggestion-quick-input .autoComplete .selectedBlue {background-color:#EEEEFF; height:20px;}
+/* these were commented out for the inline qi box help */
+.suggestion-quick-input .autoComplete {clear:both;float:left;text-align:left;height:21px;font-size:12px;border-bottom:1px solid #BDC7D8;border-left:1px solid #BDC7D8;border-right:1px solid #BDC7D8;list-style-type:none;padding:2px 2px 2px 4px;width:430px;position:absolute;height:auto;z-index:10;background-color:#EEE;}
+.quick-input-default {-khtml-user-select:none;-moz-user-select:none;font-size:11px;color:#666;background-color:#fff3dc;}
+/* end prev commented section - just in case inlineHelp renaming didn't work */
+
+/**************************************************************************************************************/
+/************************* qi_examples, that pop upnder to tell you what you can write ************************/
+/**************************************************************************************************************/
+
+.qi_examples {right:-220px;top:22px;text-align:left;font-size:11px;list-style-type:none;width:220px;position:absolute;height:auto;z-index:10;background-color:#FFF;}
+.qi_examples .orientation_callout {background:#fff8cc url(../images/orientation_callout_vertical_left.png) repeat-x left top;margin:0px 5px;padding:28px 10px 10px 10px;}
+.qi_examples .orientation_callout li {list-style-type:none;padding:0px;margin:0px;height:20px;}
+.qi_examples .orientation_callout em {padding-top:2px;height:20px;}
+.qi_examples .orientation_callout ul {list-style-type:none;padding:0px;margin:0px;width:190px;}
+.qi_examples .orientation_callout .qi_types {width:190px;color:#333;font-size:11px;}
+.qi_examples .orientation_callout .icon {float:left;padding-right:6px;width:16px;padding-top:-2px;height:16px;}
+.qi_examples .orientation_callout p{margin:2px 0px 5px 5px;line-height:15px;}
+.qi_examples .orientation_callout img{float:left;margin:0px 0px -1px 0px;}
+
+/**************************************************************************************************************/
+/************************** "andthen", aka the INLINE QUICK INPUT FEEDBACK SYSTEM *****************************/
+/**************************************************************************************************************/
+/************** this tells the user as they type what options they have for particular data type **************/
+/**************************************************************************************************************/
+/************************************** "NO 'AND THEN'! NO 'AND THEN'!" ***************************************/
+/**************************************************************************************************************/
+/** NEEDS
+ * content/code - substituting in a lot of different messages
+ * currently ugly / white background with occasional overlaps
+ * needs to come in and be removed at proper time
+ * maybe: be just left of the cursor, focusing user toward it
+**/
+
+.qi_starter {-khtml-user-select:none;-moz-user-select:none;font-size:11px;color:#777;width:360px;text-align:right;}
+/*.suggestion-quick-input .inlineHelp {right:34px;top:36px;text-align:left;font-size:11px;list-style-type:none;width:360px;position:absolute;height:auto;z-index:10;background-color:#FFF;}*/
+/* inlineHelp renamed from autoComplete - just in case renaming doesnt work */
+
+/* this one built with .card now being float */
+.suggestion-quick-input .inlineHelp {left:73px;top:-14px;width:365px;position:relative;}
+
+
+/**************************************************************************************************************/
+/*************************** "raindrop", aka the QUICK INPUT DROP BELOW SYSTEM ********************************/
+/**************************************************************************************************************/
+/******************** "ITS RAINING FRIENDS! HALLELUJAH! IT'S RAINING FRIENDS! AMEN!" **************************/
+/**************************************************************************************************************/
+
+.quick-input-header 					{font-size:12px;color:#97983b;}
+
+.suggestion-quick-input-off 	{clear:left;position:relative;height:0px; top:-13px;left:505px;}
+
+.suggestion-quick-input-data	{clear:both;position:relative;padding-top:5px;left:0px;width:518px;}
+.quick-input-holder						{position:relative;left:0px;width:530px;height:22px;}
+.quite-input-data-date				{position:absolute;font-family: Tahoma, Verdana, Arial, sans-serif;font-size:10px;left:5px;width:60px;text-align:right;padding-top:1px;color:#777;}
+.quick-input-data-icon				{position:absolute;left:65px;width:14px;padding-top:2px;}
+.quick-input-data-text 				{position:absolute;font-family: Tahoma, Verdana, Arial, sans-serif;font-size:11px;left:88px;padding-top:2px;width:360px;text-align:left;color:#333;}
+.quick-input-data-edit 				{position:absolute;font-family: Tahoma, Verdana, Arial, sans-serif;font-size:11px;right:0px;padding-top:2px;width:56px;text-align:right;color:#333;}
+
+
+.suggestion-quick-input .autoComplete li .qi_datatype {position:relative;height:20px;padding-left:2px; padding-top:2px;width:428px;border-bottom: 1px solid #ddd;}
+.suggestion-quick-input .autoComplete li .qi_datatype .icon {float:left;width:16px;padding-right:6px;padding-top:1px;height:18px;}
+.suggestion-quick-input .autoComplete li .qi_datatype .name {float:left;width:160px;padding-top:3px;height:17px;font-size:11px;color:#666;font-weight:bold;}
+.suggestion-quick-input .autoComplete li .qi_datatype .description {position:absolute;right:5px;width:240px;padding-top:4px;font-size:10px;height:16px;text-align:right;font-weight:normal;color:#666;}
+
+.suggestion-quick-input .autoComplete li .qi_selectfriend {position:relative;height:25px;padding-left:3px;padding-top:4px;padding-right:2px; padding-bottom:4px;width:427px;border-bottom: 1px solid #ddd;}
+.suggestion-quick-input .autoComplete li .qi_selectfriend .userimage {float:left;height:25px;width:25px;padding-right:6px;}
+.suggestion-quick-input .autoComplete li .qi_selectfriend .username {float:left;height:25px;width:150px;}
+.suggestion-quick-input .autoComplete li .qi_selectfriend .name {float:left;height:13px;font-size:11px;color:#666;font-weight:bold;}
+.suggestion-quick-input .autoComplete li .qi_selectfriend .details {float:left;height:12px;font-size:10px;color:#999;font-weight:normal;}
+.suggestion-quick-input .autoComplete li .qi_selectfriend .description {position:absolute;right:5px;width:250px;font-size:10px;height:25px;text-align:right;font-weight:normal;color:#666;}
+
+.suggestion-quick-input .autoComplete li .sel {background-color:#cbe1ff;}
+.suggestion-quick-input .autoComplete li .qi_selectfriend .sel {background-color:#cbe1ff;}
+.suggestion-quick-input .autoComplete li .qi_datatype .sel {background-color:#cbe1ff;}
+
+
+/**************************************************************************************************************/
+/*************************** "ninjadecorations", aka the QUICK INPUT SHADOW  **********************************/
+/**************************************************************************************************************/
+/************************* this keeps us seeing the menu, not the things behind it ****************************/
+/**************************************************************************************************************/
+
+#ninjadeco {
+  padding: 0 0 6px 0;
+  margin: 0;
+  list-style: none;
+  background: url(shadow_middle.png) repeat-y;
+}
+#ninjadeco li {
+  padding: 2px 35px;
+}
+#ninjabot {
+  height: 7px;
+  background: url(shadow_bottom.png) no-repeat;
+}
+
+#universal_search{float:left;padding:3px 11px 3px 4px;}
+#universal_search #universal_search_input{float:left;}
+#universal_search #universal_search_input #q{background:white url(../images/fb_menubar_search_shadow.gif) no-repeat top left;border:1px solid #315091;border-right:0px;float:left;margin:0px;padding:3px 4px;width:143px;}
+#universal_search #universal_search_input .typeahead_found#q{background:#e1e9f6;}
+.typeahead_search{border-width:0px;border-style:none;}
+.typeahead_search .typeahead_list_with_shadow{background:transparent url(../images/search_typeahead_shadow.png) no-repeat bottom left;border:0 none;padding:0 4px 4px 4px;}
+.ie6 .typeahead_search .typeahead_list_with_shadow{background-image:none;border:0 none;margin:0 4px 4px;padding:0;}
+.typehead_search .suggestions_top_border{border-top:1px solid #d2d4d8;}
+.typeahead_search .suggestions_bottom_border{border-bottom:solid 1px #3b5998;}
+.typeahead_search .no_border_list{border:none;}
+.typeahead_search .typeahead_suggestions{border-left:1px solid #95a5c6;border-right:1px solid #95a5c6;height:auto;width:auto;}
+.typeahead_search .typeahead_suggestion{filter:alpha(opacity=100);opacity:1.0;}
+.typeahead_search .typeaheadpro_header{background:#f7f7f7;border-top:solid 1px #95A5C6;color:#555;font-size:9px;padding:3px;}
+.typeahead_search .icon{background-position:-16px 0px;background-repeat:no-repeat;display:inline;float:left;margin-left:10px;margin-right:5px;height:16px;width:16px;}
+.typeahead_search .typeahead_selected .icon{background-position:left top;}
+.typeahead_search .app{overflow:hidden;}
+.typeahead_search .app span{float:left;padding:1px 0px 0px 1px;width:142px;}
+.typeahead_search .typeahead_suggestion{overflow:hidden;position:relative;}
+.typeahead_search img{border:1px solid white;position:absolute;margin-top:2px;line-height:1px;height:25px;width:25px;top:1px;}
+.ie6 .typeahead_search img{left:0px;}
+.typeahead_search .typeahead_selected img{border:1px solid #6e84b3;}
+.typeahead_search .with_pic{padding-left:32px;min-height:27px;}
+* html .typeahead_search .with_pic{height:27px;}
+.typeahead_search .typeahead_suggestion .with_pic small{padding:1px 0px;}
+.typeahead_search .typeahead_suggestion .with_pic small,
+.typeahead_search .typeahead_suggestion .with_pic span{display:block;padding-left:0px;}
+#universal_search #universal_search_submit{float:left;width:21px;}
+#universal_search #universal_search_submit a{background:#6d84b4 url(/images/search_input_gloss.gif) top center repeat-x;border:1px solid #315091;display:block;font-size:11px;margin:0px;padding:0px;text-decoration:none;width:19px;}
+#universal_search #universal_search_submit a span{background:url(/images/search_glass.gif) 0% 70% no-repeat;display:block;margin:0px;padding:3px 0px;}
+#universal_search #universal_search_submit a:active{background:#5b75ab;border:1px solid #3b5998;border:1px solid #315091;}
+#universal_search #universal_search_submit a:active span{background:url(/images/search_glass.gif) 100% 70% no-repeat;}
+
+/**************************************************************************************************************/
+/*************************** "sideloner", aka the QUICK INPUT DROP-SIDE SYSTEM ********************************/
+/**************************************************************************************************************/
+/**************** currently this is not in use because it wasn't useful and thus wasn't used ******************/
+/**************************************************************************************************************/
+
+#quick-input-sidebox {position:absolute;padding:5px;width:190px;height:190px;top:-45px;right:-197px;background-color:#ffdddd;z-index:20;}
+/* This file skins sliders */
+
+.ui-slider { width: 55px; height: 16px; position: relative; background-repeat: no-repeat; background-position: center center; }
+.ui-slider-handle {-khtml-user-select:none;-moz-user-select:none; position: absolute; z-index: 1; height: 16px; width: 15px; top: 0px; left: 0px; background-image: url(../images/slider_handle.gif);  }
+/*.ui-slider-handle-active { border: 1px dotted black;  }*/
+.ui-slider-disabled .ui-slider-handle { opacity: 0.5; filter: alpha(opacity=50); }
+.ui-slider-range { position: absolute; background: #50A029; opacity: 0.3; filter: alpha(opacity=30); width: 100%; height: 100%; }
+
+/* Default slider backgrounds */
+.ui-slider, .ui-slider-1 { background-image: url(../images/slider_bg.gif); }
+.sliderLeft {
+float:left;
+margin-right:12px;
+width:55px;
+}
+.sliderRight {
+color:#777777;
+float:left;
+}
